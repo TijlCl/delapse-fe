@@ -38,10 +38,36 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+
+    // https://auth.nuxtjs.org/
+    '@nuxtjs/auth-next'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  // Auth module configuration (https://dev.auth.nuxtjs.org/)
+  auth: {
+    redirect: {
+      home: '/login',
+    },
+    strategies: {
+      laravelPassportPasswordGrant: {
+        name: 'laravelPassportPassword',
+        provider: 'laravel/passport',
+        url: '/backend',
+        endpoints: {
+          logout: '',
+          user: {
+            url: '',
+          },
+        },
+        clientId: process.env.PASSPORT_CLIENT_ID,
+        clientSecret: process.env.PASSPORT_CLIENT_SECRET,
+        grantType: 'password',
+      },
+    },
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
@@ -52,5 +78,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  // add auth middleware to all routes by default
+  router: {
+    middleware: ['auth']
   }
 }
