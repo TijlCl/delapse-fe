@@ -6,9 +6,9 @@ Once you have completed the challenge you can upload a photo here."/>
 
     <Button title="Login" color="#1BA711"/>
 
-    <BackgroundPage img="night-sky" alt="image of tree in the night sky."/>
+<!--    <BackgroundPage img="night-sky" alt="image of tree in the night sky."/>-->
 
-    
+
   </div>
 </template>
 
