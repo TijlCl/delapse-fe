@@ -23,13 +23,20 @@
           GitHub
         </a>
         <NuxtLink to="/components" class="button--grey">Components</NuxtLink>
+        <Button title="LOGOUT" @click.native="logout" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {}
+export default {
+  methods: {
+    logout() {
+      this.$auth.logout();
+    }
+  }
+}
 </script>
 
 <style>

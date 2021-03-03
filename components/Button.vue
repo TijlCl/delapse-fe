@@ -27,7 +27,7 @@ export default {
     },
     color: {
       type: String,
-      required: true
+      default: '#1BA711'
     },
   },
   data() {
