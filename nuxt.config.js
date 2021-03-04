@@ -36,6 +36,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    "~/plugins/vee-validate"
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -45,7 +46,14 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/fontawesome'
   ],
+
+  fontawesome: {
+    icons: {
+      solid: ['faHome', 'faKey', 'faUser'],
+    }
+  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -145,5 +153,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ["vee-validate/dist/rules"],
+    /*
+     ** You can extend webpack config here
+     */
+    extend(config, ctx) {}
   }
 }

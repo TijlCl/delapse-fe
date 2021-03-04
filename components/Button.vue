@@ -1,6 +1,6 @@
 <template>
-  <button class="button text-white" :style="{ 'background-color': color}" ref="button" v-on:click="animateRipple">
-    {{title}}
+  <button class="text-white" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button" v-on:click="animateRipple">
+    <span v-html="title"></span>
     <transition-group>
 		<span
       class="ripple"
@@ -29,6 +29,10 @@ export default {
       type: String,
       default: '#1BA711'
     },
+    small: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -68,6 +72,18 @@ button:focus {
   overflow: hidden;
   display: inline-block;
   position: relative;
+}
+
+.button-small{
+  width: 100%;
+  padding: 1px 3px 1px 3px;
+  border-radius: 25px;
+  text-align: center;
+  opacity: 80%;
+  overflow: hidden;
+  display: inline-block;
+  position: relative;
+  font-size: 1.8vh;
 }
 
 .ripple {
