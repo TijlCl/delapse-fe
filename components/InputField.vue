@@ -10,7 +10,7 @@
           <input
             v-model="val"
             :type="inputType"
-            class="w-9/12 self-center text-xl outline-none text-white bg-transparent placeholder-white"
+            class="w-9/12 self-center text-xl outline-none text-white bg-transparent placeholder-white placeholder-opacity-75"
             v-bind:class="icon ? '' : 'px-3'"
             :placeholder="placeholder"
           />

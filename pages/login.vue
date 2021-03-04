@@ -6,13 +6,13 @@
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
     >
-      <div class="py-4 px-6 mt-4">
+      <div class="py-4 px-6 mt-8">
         <label class="login-label">Login to your account</label>
         <form @submit.prevent="loginPassport">
           <div class="mt-3">
             <InputField  v-model="email" class="mb-4" placeholder="Email" icon="user"/>
           </div>
-          <div class="mt-8">
+          <div class="mt-4">
             <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password"/>
           </div>
           <div class="mt-8">
@@ -24,9 +24,11 @@
     <div class="w-1/2 py-4 px-6 mt-16 mx-auto flex items-center justify-center">
       <Button title="Forgot password?" color="#9c9c9c" small/>
     </div>
-    <div class="w-10/12 py-4 px-6 mt-10 mx-auto flex items-center justify-center">
-      <Button title="Don't have an account yet? <b>Sing up here</b>" color="#9c9c9c" small/>
-    </div>
+    <NuxtLink  to="/register">
+      <div class="w-10/12 py-4 px-6 mt-10 mx-auto flex items-center justify-center">
+          <Button title="Don't have an account yet? <b>Sing up here</b>" color="#9c9c9c" small/>
+      </div>
+    </NuxtLink>
   </div>
 </template>
 
@@ -51,7 +53,7 @@ export default {
             client_id: this.$config.grandClientId,
             client_secret: this.$config.grandClientSecret,
             scope: "*",
-            username: this.username,
+            username: this.email,
             password: this.password
           }
         })
