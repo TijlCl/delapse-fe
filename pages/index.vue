@@ -14,8 +14,16 @@
       <Event img="mountains" title="Meet friends" date="Mon 10/08/21" tag="Home"/>
     </div>
 
-    <div id="weekly-challenge-wrapper">
-      
+    <div id="weekly-challenge-wrapper" class="mx-5 mb-10">
+      <p class="mb-2">Weekly challenge</p>
+      <ChallengeCard class="mb-4" img="cake" title="Bake a cake" caption="Search a recipe for a cake and try to make it.
+Once you have completed the challenge you can upload a photo here."/>
+    </div>
+
+    <div id="activities" class="mx-5">
+      <p class="mb-2">Activities</p>
+      <ChallengeCard class="mb-10" img="yoga" title="Yoga"/>
+      <ChallengeCard class="mb-10" img="meditation" title="Meditation"/>
     </div>
 
 <!--    <Button title="LOGOUT" @click.native="logout" />-->
