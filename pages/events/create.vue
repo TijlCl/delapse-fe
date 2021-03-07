@@ -10,7 +10,7 @@
             <InputField  v-model="title" class="mb-4" placeholder="Title" icon="user"/>
           </div>
           <div class="mt-6">
-            <InputField  v-model="date" class="mb-4" placeholder="Date" icon="calendar-alt"/>
+            <DatePickerInputField  v-model="date" class="mb-4" placeholder="Date" icon="calendar-alt"/>
           </div>
           <div class="mt-6">
             <InputField  v-model="description" class="mb-4" placeholder="Description" icon="book-open"/>
@@ -33,6 +33,7 @@ export default {
       title: null,
       date: null,
       description: null,
+      date_today: null,
       error: null,
     }
   },
