@@ -1,36 +1,35 @@
 <template>
-  <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">
-        delapse-fe
-      </h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-        <NuxtLink to="/components" class="button--grey">Components</NuxtLink>
-        <Button title="LOGOUT" @click.native="logout" />
-      </div>
+  <div class="min-h-screen">
+
+    <div class="header-background h-48 flex flex-wrap content-end shadow mb-10">
+      <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
+
+    <div id="events" class="scroll-right ml-5 mb-10">
+      <p class="mb-2">Events</p>
+      <AddEvent img="mountains"/>
+      <Event img="mountains" title="Work meeting" date="Mon 10/02/21" tag="Work"/>
+      <Event img="forest" title="Clean house" date="Thu 13/03/21" tag="Home"/>
+      <Event img="mountains2" title="Shopping" date="Sun 15/06/21" tag="Work"/>
+      <Event img="mountains" title="Meet friends" date="Mon 10/08/21" tag="Home"/>
+    </div>
+
+    <div id="weekly-challenge-wrapper">
+      
+    </div>
+
+<!--    <Button title="LOGOUT" @click.native="logout" />-->
   </div>
 </template>
 
 <script>
 export default {
+  data: function () {
+    return {
+      userName : this.$auth.user.name
+    }
+  },
+
   methods: {
     logout() {
       this.$auth.logout();
@@ -40,47 +39,37 @@ export default {
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+
+
+.header-background{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~assets/img/home-header-bg.jpg"), no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
-.title {
-  font-family:
-    'Quicksand',
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+.header-background:after{
+  background-color: rgba(0 ,0 ,0 ,0.1);
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+.home-title{
+  color: white;
+  font-size: 36pt;
+  max-height: 30%;
+  margin: 5%;
 }
 
-.links {
-  padding-top: 15px;
+.scroll-right{
+  overflow: auto;
+  white-space: nowrap;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-right::-webkit-scrollbar {
+  display: none;
 }
 </style>
