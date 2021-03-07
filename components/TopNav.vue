@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-20 bg-white flex flex-wrap content-center grid grid-cols-3 place-content-center bottom-border">
+  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center bottom-border">
     <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-2xl back-arrow" icon="arrow-left"/>
-    <h2 class="page-title justify-self-center">{{ pageTitle }}</h2>
+    <h2 class="page-title text-white justify-self-center">{{ pageTitle }}</h2>
   </div>
 </template>
 
