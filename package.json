@@ -18,8 +18,11 @@
     "@nuxtjs/pwa": "^3.3.5",
     "@nuxtjs/toast": "3.3.1",
     "core-js": "^3.8.3",
+    "laravel-echo": "^1.10.0",
     "nuxt": "^2.14.12",
-    "vee-validate": "^3.4.5"
+    "pusher-js": "^7.0.3",
+    "vee-validate": "^3.4.5",
+    "vue-echo-laravel": "0.0.6"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^3.4.2",

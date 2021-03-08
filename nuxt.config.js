@@ -22,12 +22,25 @@ export default {
     clientSecret: process.env.PASSPORT_CLIENT_SECRET,
     grandClientId: process.env.PASSPORT_GRANT_CLIENT_ID,
     grandClientSecret: process.env.PASSPORT_GRANT_CLIENT_SECRET,
+    mixPusherAppKey: process.env.MIX_PUSHER_APP_KEY,
+    mixPusherAppCluster: process.env.MIX_PUSHER_APP_CLUSTER,
+  },
+  env: {
+    apiURL: process.env.API_URL,
+    clientId: process.env.PASSPORT_CLIENT_ID,
+    clientSecret: process.env.PASSPORT_CLIENT_SECRET,
+    grandClientId: process.env.PASSPORT_GRANT_CLIENT_ID,
+    grandClientSecret: process.env.PASSPORT_GRANT_CLIENT_SECRET,
+    mixPusherAppKey: process.env.MIX_PUSHER_APP_KEY,
+    mixPusherAppCluster: process.env.MIX_PUSHER_APP_CLUSTER,
   },
   privateRuntimeConfig: {
     clientId: process.env.PASSPORT_CLIENT_ID,
     clientSecret: process.env.PASSPORT_CLIENT_SECRET,
     grandClientId: process.env.PASSPORT_GRANT_CLIENT_ID,
     grandClientSecret: process.env.PASSPORT_GRANT_CLIENT_SECRET,
+    mixPusherAppKey: process.env.MIX_PUSHER_APP_KEY,
+    mixPusherAppCluster: process.env.MIX_PUSHER_APP_CLUSTER,
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -36,7 +49,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    "~/plugins/vee-validate"
+    "~/plugins/vee-validate",
+    '~/plugins/echo.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

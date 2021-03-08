@@ -19,6 +19,11 @@ export default {
     return {
       input: null
     }
+  },
+  mounted() {
+    Echo.private("comment").listen(".event", e => {
+      console.log('test');
+    });
   }
 }
 </script>

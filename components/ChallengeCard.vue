@@ -1,7 +1,6 @@
 <template>
   <div class="rounded-xl overflow-hidden md:w-50 shadow-2xl ">
     <div class="md:flex challenge-container">
-<!--        <img class="h-48 w-full object-cover" src="~/assets/img/cake.jpg" alt="Man looking at item at a store">-->
         <img class="h-48 w-full object-cover" :src="require(`~/assets/img/${img}.jpg`)" :alt="alt">
       <div class="text-block">
         <div class="uppercase tracking-wide text-sm text-center text-white font-semibold">{{ title }}</div>
