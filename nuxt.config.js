@@ -65,7 +65,7 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faHome', 'faKey', 'faUser', 'faEnvelopeOpen', 'faLock'],
+      solid: ['faHome', 'faKey', 'faUser', 'faEnvelopeOpen', 'faLock', 'faArrowRight'],
     }
   },
 
