@@ -17,6 +17,7 @@
           :placeholder="placeholder" />
     </div>
     <span v-if="errors.length > 0" class="input-errors pl-2">{{ errors[0] }}</span>
+    <span v-for="(apiError, i) in apiErrors" :key="i" class="input-errors pl-2">{{ apiError }}</span>
   </ValidationProvider>
 </template>
 
@@ -43,7 +44,11 @@ export default {
     },
     value: {
       required: true
-    }
+    },
+    apiErrors: {
+      type: Array,
+      required: false
+    },
   },
   components: {
     ValidationProvider
