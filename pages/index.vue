@@ -26,16 +26,28 @@ Once you have completed the challenge you can upload a photo here."/>
       <ChallengeCard class="mb-10" img="meditation" title="Meditation"/>
     </div>
 
-<!--    <Button title="LOGOUT" @click.native="logout" />-->
+    <!--    <Button title="LOGOUT" @click.native="logout" />-->
   </div>
 </template>
 
 <script>
+
 export default {
+
   data: function () {
     return {
       userName : this.$auth.user.name
     }
+  },
+
+  computed: {
+    events() {
+      return this.$store.getters['modules/events/events'];
+    }
+  },
+
+  mounted() {
+    this.$store.dispatch('modules/events/fetchAll');
   },
 
   methods: {
