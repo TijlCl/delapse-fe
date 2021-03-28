@@ -8,10 +8,7 @@
     <div id="events" class="scroll-right ml-5 mb-10">
       <p class="mb-2">Events</p>
       <AddEvent img="mountains"/>
-      <Event img="mountains" title="Work meeting" date="Mon 10/02/21" tag="Work"/>
-      <Event img="forest" title="Clean house" date="Thu 13/03/21" tag="Home"/>
-      <Event img="mountains2" title="Shopping" date="Sun 15/06/21" tag="Work"/>
-      <Event img="mountains" title="Meet friends" date="Mon 10/08/21" tag="Home"/>
+      <Event v-for="(event, i) in events" :key="i" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag"/>
     </div>
 
     <div id="weekly-challenge-wrapper" class="mx-5 mb-10">
@@ -33,23 +30,19 @@ Once you have completed the challenge you can upload a photo here."/>
 <script>
 
 export default {
-
-  data: function () {
+  data() {
     return {
       userName : this.$auth.user.name
     }
   },
-
   computed: {
     events() {
       return this.$store.getters['modules/events/events'];
-    }
+    },
   },
-
   mounted() {
     this.$store.dispatch('modules/events/fetchAll');
   },
-
   methods: {
     logout() {
       this.$auth.logout();

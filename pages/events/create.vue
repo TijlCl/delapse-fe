@@ -15,6 +15,11 @@
           <div class="mt-6">
             <InputField v-model="description" class="mb-4" placeholder="Description" icon="book-open" :api-errors="errors.description"/>
           </div>
+
+          <div class="mt-6">
+            <SelectField v-model="tag" :options="['Private', 'Work', 'School']" class="mb-4" :api-errors="errors.tag"/>
+          </div>
+
           <div class="mt-12">
             <Button title="Save" color="#1BA711"/>
           </div>
@@ -34,24 +39,30 @@ export default {
       title: null,
       date: null,
       description: null,
-      date_today: null,
-      errors: {},
+      tag: 'Private',
     }
+  },
+  computed: {
+    errors() {
+      return this.$store.getters['modules/events/errors'];
+    },
   },
   methods: {
     async storeEvent() {
-      this.error = null;
-      this.$axios.post("api/v1/events", {
+      const event = {
         title: this.title,
         date: this.date,
         description: this.description,
-      }).then(response => {
-
-      })
-        .catch(errors => {
-          console.log(errors.response.data.errors);
-          this.errors = errors.response.data.errors;
+        tag: this.tag,
+      }
+      try {
+        await this.$store.dispatch('modules/events/create', event).then(res => {
+          // this.$router.back();
         })
+      } catch (e) {
+          console.log(e);
+      }
+
     },
   },
 }

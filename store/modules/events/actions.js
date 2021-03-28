@@ -1,6 +1,17 @@
 export default {
   async fetchAll (context) {
-    const {data} = await this.$axios.get(`/api/v1/events`);
-    context.commit('setEvents', data.data);
+    if(context.getters['isEmpty']) {
+      const {data} = await this.$axios.get(`/api/v1/events`);
+      context.commit('setEvents', data.data);
+    }
+  },
+  async create(context, event) {
+    await this.$axios.post(`/api/v1/events`, event)
+      .then(response => {
+        context.commit('setErrors', {});
+        context.commit('addEvent', response.data);
+      }).catch(errors => {
+        context.commit('setErrors', errors.response.data.errors);
+      })
   }
 }

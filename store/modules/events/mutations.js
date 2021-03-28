@@ -6,5 +6,9 @@ export default {
   },
   addEvent(state, event) {
     state.events.push(event);
+  },
+  setErrors(state, errors) {
+    Vue.set(state, 'errors', errors)
+    state['errors'] = errors
   }
 }
