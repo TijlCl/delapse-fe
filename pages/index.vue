@@ -37,11 +37,11 @@ export default {
   },
   computed: {
     events() {
-      return this.$store.getters['modules/events/events'];
+      return this.$store.getters['events/events'];
     },
   },
   mounted() {
-    this.$store.dispatch('modules/events/fetchAll');
+    this.$store.dispatch('events/fetchAll');
   },
   methods: {
     logout() {

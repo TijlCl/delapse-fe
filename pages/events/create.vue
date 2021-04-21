@@ -43,7 +43,7 @@ export default {
   },
   computed: {
     errors() {
-      return this.$store.getters['modules/events/errors'];
+      return this.$store.getters['events/errors'];
     },
   },
   methods: {
@@ -55,7 +55,7 @@ export default {
         tag: this.tag,
       }
       try {
-        await this.$store.dispatch('modules/events/create', event)
+        await this.$store.dispatch('events/create', event)
         this.$router.back();
       } catch (e) {
           console.log(e);
