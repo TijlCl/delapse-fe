@@ -16,8 +16,10 @@ export default {
   },
   methods: {
     send() {
-      debugger;
-      this.$store.dispatch('chat/sendMessage', this.val);
+      this.$store.dispatch('chat/sendMessage', {
+        message: this.val,
+        friendId: this.$route.params.friendId
+      });
       this.val = null;
     }
   }

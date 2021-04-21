@@ -4,11 +4,14 @@ export default {
     context.commit('setChatId', data.data.id);
     context.commit('setMessages', data.data.messages);
   },
-  async sendMessage (context, message) {
+  async sendMessage (context, {message, friendId}) {
     context.commit('addMessage', {body: message, isSender: true});
-    await this.$axios.post('/api/v1/chats/4/send', {
-      chatId: context.state.id,
+    await this.$axios.post(`/api/v1/chats/${context.state.id}/send`, {
+      to: friendId,
       message: message
     });
+  },
+  async addEvent(context) {
+    this.$axios.put('/api/v1/chats')
   }
 }

@@ -1,13 +1,14 @@
-import Vue from 'vue'
+import mutations from '../../default/detail/mutations'
+
 export default {
+  ...mutations,
   setChatId(state, id) {
     state.id = id;
   },
   setMessages(state, messages) {
-    Vue.set(state, 'messages', messages)
-    state['messages'] = messages
+    state.messages = messages;
   },
   addMessage(state, message) {
-    state.messages.push(message);
+    state.messages.unshift(message);
   }
 }

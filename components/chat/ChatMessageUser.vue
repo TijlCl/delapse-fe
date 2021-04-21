@@ -1,5 +1,5 @@
 <template>
-  <div class="chat-message m-4">
+  <div class="chat-message mx-4 my-1">
     <div class="flex items-end justify-end">
       <div class="flex flex-col space-y-2 text-xs max-w-xs mx-2 order-1 items-end">
         <div>

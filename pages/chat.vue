@@ -1,9 +1,11 @@
 <template>
   <div>
-    <div v-for="message in messages">
-      <ChatMessageUser v-if="message.isSender" :text="message.body" />
-      <ChatMessageContact v-else :text="message.body" />
-    </div>
+    <ul class="chat-messages" id="scroll">
+      <li v-for="message in messages">
+        <ChatMessageUser v-if="message.isSender" :text="message.body" />
+        <ChatMessageContact v-else :text="message.body" />
+      </li>
+    </ul>
     <div class="w-full absolute bottom-0 mb-4">
       <ChatInput />
     </div>
@@ -11,39 +13,60 @@
 </template>
 
 <script>
-import chatModule from '../store/modules/chat'
+import resetStateOnLeave from "~/mixins/resetStateOnLeave";
 
 export default {
-  name: "chat",
+  mixins: [resetStateOnLeave],
   data() {
     return {
-      store: 'chat'
+      store: 'chat',
     }
   },
   computed: {
     messages() {
       return this.$store.getters['chat/messages'];
+    },
+    title: {
+      get() {
+        return this.$store.getters['event/title'];
+      },
+      set(value){
+        this.$store.commit('event/setTitle', value)
+      }
     }
   },
-  mounted() {
-    this.registerModule();
-    this.fetchChat();
+  watch: {
+    messages(newVal) {
+      this.scrollToBottom();
+    }
+  },
+  async mounted() {
+    await this.fetchChat();
     Echo.private(`message.${this.$auth.user.id}`).listen(".new-message", e => {
       this.$store.commit('chat/addMessage', {body: e.message.body, isSender: false});
     });
+    // this.scrollToBottom();
   },
   methods: {
-    async registerModule() {
-      await this.$store.registerModule('chat', chatModule);
-    },
     async fetchChat() {
       const user = this.$route.params.friendId;
       await this.$store.dispatch('chat/fetch', user);
+    },
+    scrollToBottom() {
+      //scroll to bottom when a new message is added
+      let objDiv = document.getElementById("scroll");
+      objDiv.scrollTop = objDiv.scrollHeight;
     }
   }
 }
 </script>
 
 <style scoped>
+.chat-messages {
+  height: 90vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 </style>

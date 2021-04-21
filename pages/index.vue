@@ -23,6 +23,8 @@
           GitHub
         </a>
         <NuxtLink to="/components" class="button--grey">Components</NuxtLink>
+        <NuxtLink to="/friends" class="button--grey">Friends</NuxtLink>
+        <NuxtLink to="/chat" class="button--grey">Chat</NuxtLink>
         <Button title="LOGOUT" @click.native="logout" />
       </div>
     </div>
