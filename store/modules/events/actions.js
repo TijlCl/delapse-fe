@@ -9,9 +9,10 @@ export default {
     await this.$axios.post(`/api/v1/events`, event)
       .then(response => {
         context.commit('setErrors', {});
-        context.commit('addEvent', response.data);
+        context.commit('addEvent', response.data.data);
       }).catch(errors => {
         context.commit('setErrors', errors.response.data.errors);
+        throw errors;
       })
   }
 }

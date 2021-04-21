@@ -31,7 +31,6 @@
 
 <script>
 export default {
-
   layout: 'base',
 
   data() {
@@ -56,9 +55,8 @@ export default {
         tag: this.tag,
       }
       try {
-        await this.$store.dispatch('modules/events/create', event).then(res => {
-          // this.$router.back();
-        })
+        await this.$store.dispatch('modules/events/create', event)
+        this.$router.back();
       } catch (e) {
           console.log(e);
       }
