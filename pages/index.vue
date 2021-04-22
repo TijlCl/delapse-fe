@@ -8,7 +8,7 @@
     <div id="events" class="scroll-right ml-5 mb-10">
       <p class="mb-2">Events</p>
       <AddEvent img="mountains"/>
-      <Event v-for="(event, i) in events" :key="i" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag"/>
+      <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
 
     <div id="weekly-challenge-wrapper" class="mx-5 mb-10">
@@ -46,6 +46,12 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
+    },
+    editEvent(id) {
+      this.$router.push({
+        name: 'events-id',
+        params: {id: id}
+      })
     }
   }
 }
