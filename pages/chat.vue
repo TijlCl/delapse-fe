@@ -6,7 +6,7 @@
         <ChatMessageUser v-if="message.isSender" :text="message.body" />
         <ChatMessageContact v-else :text="message.body" />
       </li>
-    </ul>ª
+    </ul>
     <div class="w-full absolute bottom-0 mb-4">
       <ChatInput />
     </div>
