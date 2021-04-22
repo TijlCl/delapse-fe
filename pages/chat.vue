@@ -1,11 +1,12 @@
 <template>
   <div>
+    <TopNav :pageTitle="title" dark />
     <ul class="chat-messages" id="scroll">
       <li v-for="message in messages">
         <ChatMessageUser v-if="message.isSender" :text="message.body" />
         <ChatMessageContact v-else :text="message.body" />
       </li>
-    </ul>
+    </ul>ª
     <div class="w-full absolute bottom-0 mb-4">
       <ChatInput />
     </div>
@@ -26,13 +27,8 @@ export default {
     messages() {
       return this.$store.getters['chat/messages'];
     },
-    title: {
-      get() {
-        return this.$store.getters['event/title'];
-      },
-      set(value){
-        this.$store.commit('event/setTitle', value)
-      }
+    title() {
+      return this.$route.params.friendName
     }
   },
   watch: {
@@ -63,7 +59,7 @@ export default {
 
 <style scoped>
 .chat-messages {
-  height: 90vh;
+  height: 78vh;
   overflow: scroll;
   display: flex;
   flex-direction: column-reverse;

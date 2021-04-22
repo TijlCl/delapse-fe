@@ -5,10 +5,10 @@
     </span>
     <div class="flex-grow p-3">
       <div class="font-semibold text-gray-700">
-        {{ name }}
+        {{ friend.user.name }}
       </div>
       <div class="text-sm text-gray-500">
-        {{ message }}
+        {{ lastMessage }}
       </div>
     </div>
   </div>
@@ -17,18 +17,19 @@
 <script>
 export default {
   props: {
-    name: {
-      type: String,
-      required: true
-    },
-    message: {
-      type: String,
-      default: ''
+    friend: {
+      type: Object,
+      default: () => {}
     }
   },
   data() {
     return {
     }
   },
+  computed: {
+    lastMessage() {
+      return this.friend.chat?.lastMessage?.body;
+    }
+  }
 }
 </script>
