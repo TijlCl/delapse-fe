@@ -9,5 +9,11 @@ export default {
   },
   setErrors(state, errors) {
     Vue.set(state, 'errors', errors)
+  },
+  updateById(state, updatedEvent) {
+    const oldEvent = state.events.find(event => event.id === updatedEvent.id);
+    if(oldEvent) {
+      Object.assign(oldEvent, updatedEvent);
+    }
   }
 }

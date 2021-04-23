@@ -7,6 +7,7 @@ export default {
     await this.$axios.put(`/api/v1/events/${id}`, event)
       .then(response => {
         context.commit('setErrors', {});
+        context.commit('events/updateById', response.data.data, { root: true });
       }).catch(errors => {
         context.commit('setErrors', errors.response.data.errors);
         throw errors;
