@@ -24,6 +24,10 @@
             <Button title="Save" color="#1BA711"/>
           </div>
         </form>
+
+        <span class="flex items-center text-2xl text-red-700 mt-10">
+          <font-awesome-icon v-on:click="deleteEvent" icon="trash"/>
+        </span>
       </div>
     </div>
   </div>
@@ -99,7 +103,15 @@ export default {
       } catch (e) {
         console.log(e);
       }
+    },
 
+    async deleteEvent() {
+      try {
+          await this.$store.dispatch('event/delete', this.$route.params.id)
+          this.$router.back();
+      } catch (e) {
+        console.log(e);
+      }
     },
   },
 }

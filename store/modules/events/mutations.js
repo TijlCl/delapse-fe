@@ -15,5 +15,9 @@ export default {
     if(oldEvent) {
       Object.assign(oldEvent, updatedEvent);
     }
-  }
+  },
+  removeById(state, eventId) {
+    const eventIndex = state.events.map(event => event.id).indexOf(eventId)
+    state.events.splice(eventIndex, 1);
+  },
 }
