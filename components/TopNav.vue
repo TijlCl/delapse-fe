@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center bottom-border">
+  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center" v-bind:class="line ? 'bottom-border' : ''">
     <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-2xl back-arrow" icon="arrow-left"/>
     <h2 class="page-title justify-self-center" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</h2>
   </div>
@@ -15,6 +15,10 @@ export default {
     dark: {
       type: Boolean,
       default: false
+    },
+    line: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
