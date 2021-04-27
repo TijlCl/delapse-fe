@@ -11,16 +11,15 @@
       <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
 
-    <div id="weekly-challenge-wrapper" class="mx-5 mb-10">
+    <div id="weekly-challenge-wrapper" class="scroll-right mx-5 mb-10">
       <p class="mb-2">Weekly challenge</p>
-      <ChallengeCard class="mb-4" img="cake" title="Bake a cake" caption="Search a recipe for a cake and try to make it.
-Once you have completed the challenge you can upload a photo here."/>
+      <ChallengeCard v-for="(challenge, i) in challenges" :key="i" v-if="!challenge.completed" class="mb-4" :img="challenge.image" :title="challenge.title" :caption="challenge.description"/>
     </div>
 
     <div id="activities" class="mx-5">
       <p class="mb-2">Activities</p>
-      <ChallengeCard class="mb-10" img="yoga" title="Yoga"/>
-      <ChallengeCard class="mb-10" img="meditation" title="Meditation"/>
+      <ActivityCard class="mb-10" img="yoga" title="Yoga"/>
+      <ActivityCard class="mb-10" img="meditation" title="Meditation"/>
     </div>
 
     <!--    <Button title="LOGOUT" @click.native="logout" />-->
@@ -39,9 +38,13 @@ export default {
     events() {
       return this.$store.getters['events/events'];
     },
+    challenges() {
+      return this.$store.getters['challenges/challenges'];
+    },
   },
   mounted() {
     this.$store.dispatch('events/fetchAll');
+    this.$store.dispatch('challenges/fetchAll');
   },
   methods: {
     logout() {
