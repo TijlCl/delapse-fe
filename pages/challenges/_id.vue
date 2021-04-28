@@ -1,6 +1,8 @@
 <template>
   <div class="min-h-screen">
-    <TopNav :pageTitle="challenge.challenge.title"></TopNav>
+    <TopNav dark :pageTitle="challenge.challenge.title || 'Challenge'">
+
+    </TopNav>
 
   </div>
 </template>

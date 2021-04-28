@@ -1,6 +1,9 @@
 <template>
   <div class="min-h-screen add-event-bg">
-    <TopNav pageTitle="Edit event"></TopNav>
+
+    <TopNav pageTitle="Edit event">
+      <font-awesome-icon class="text-xl text-red-700" @click="deleteEvent" icon="trash"/>
+    </TopNav>
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
     >
@@ -24,10 +27,7 @@
             <Button title="Save" color="#1BA711"/>
           </div>
         </form>
-
-        <span class="flex items-center text-2xl text-red-700 mt-10">
-          <font-awesome-icon v-on:click="deleteEvent" icon="trash"/>
-        </span>
+        
       </div>
     </div>
   </div>
