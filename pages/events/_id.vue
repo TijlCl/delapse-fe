@@ -2,8 +2,15 @@
   <div class="min-h-screen add-event-bg">
 
     <TopNav pageTitle="Edit event">
-      <font-awesome-icon class="text-xl text-red-700" @click="deleteEvent" icon="trash"/>
+      <font-awesome-icon class="text-xl text-red-700" @click="showDeleteModal" icon="trash"/>
     </TopNav>
+
+    <WarningModal title="Delete event" v-show="deleteModalVisible" @close="closeDeleteModal">
+      <button @click="deleteEvent" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
+        Delete
+      </button>
+    </WarningModal>
+
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
     >
@@ -27,7 +34,7 @@
             <Button title="Save" color="#1BA711"/>
           </div>
         </form>
-        
+
       </div>
     </div>
   </div>
@@ -42,6 +49,7 @@ export default {
   data() {
     return {
       store: 'event',
+      deleteModalVisible: false,
     }
   },
   async fetch ({ store, params }) {
@@ -113,6 +121,14 @@ export default {
         console.log(e);
       }
     },
+
+    showDeleteModal () {
+      this.deleteModalVisible = true;
+    },
+
+    closeDeleteModal () {
+      this.deleteModalVisible = false;
+    }
   },
 }
 </script>
