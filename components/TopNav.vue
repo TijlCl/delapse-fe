@@ -47,7 +47,7 @@ export default {
 }
 
 .bottom-border{
-  border-bottom: 1px solid #707070;
+  border-bottom: 1px solid rgba(112, 112, 112, .3);
 }
 
 </style>
