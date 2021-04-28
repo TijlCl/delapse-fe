@@ -44,9 +44,9 @@ export default {
       store: 'event',
     }
   },
-  async beforeCreate() {
-    const eventId = this.$route.params.id;
-    await this.$store.dispatch('event/fetch', eventId);
+  async fetch ({ store, params }) {
+    const eventId = params.id;
+    await store.dispatch('event/fetch', eventId);
   },
   computed: {
     title: {

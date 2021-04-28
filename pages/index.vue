@@ -11,9 +11,9 @@
       <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
 
-    <div id="weekly-challenge-wrapper" class="scroll-right mx-5 mb-10">
+    <div id="weekly-challenge-wrapper" class="scroll-right ml-5 mb-10">
       <p class="mb-2">Weekly challenge</p>
-      <ChallengeCard v-for="(challenge, i) in challenges" :key="i" v-if="!challenge.completed" class="mb-4" :img="challenge.image" :title="challenge.title" :caption="challenge.description"/>
+      <ChallengeCard v-for="(challenge, i) in challenges" :key="i" v-if="!challenge.completed" class="mb-4" :img="challenge.challenge.image" :title="challenge.challenge.title" :caption="challenge.challenge.description" @click.native="challengeDetail(challenge.id)"/>
     </div>
 
     <div id="activities" class="mx-5">
@@ -42,9 +42,9 @@ export default {
       return this.$store.getters['challenges/challenges'];
     },
   },
-  mounted() {
-    this.$store.dispatch('events/fetchAll');
-    this.$store.dispatch('challenges/fetchAll');
+  async fetch ({ store }) {
+    await store.dispatch('events/fetchAll');
+    await store.dispatch('challenges/fetchAll');
   },
   methods: {
     logout() {
@@ -53,6 +53,12 @@ export default {
     editEvent(id) {
       this.$router.push({
         name: 'events-id',
+        params: {id: id}
+      })
+    },
+    challengeDetail(id) {
+      this.$router.push({
+        name: 'challenges-id',
         params: {id: id}
       })
     }
