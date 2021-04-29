@@ -7,7 +7,7 @@
           class="w-full self-center text-xl outline-none bg-transparent placeholder-opacity-75 border-b-4 resize-none h-12"
           v-bind:class="icon ? '' : 'px-3'"
           :placeholder="placeholder"
-        />
+        ></textarea>
       </label>
     </div>
     <span v-if="errors.length > 0" class="input-errors pl-2">{{ errors[0] }}</span>
@@ -62,6 +62,6 @@ export default {
 <style scoped>
 .input-errors{
   font-weight: bold;
-  color: red;
+  color: #ff0000;
 }
 </style>
