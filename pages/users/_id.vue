@@ -27,7 +27,7 @@
     </div>
 
     <div class="mt-6 px-16">
-      <Button title="Add friend" color="#1BA711"/>
+      <Button title="Add friend" color="#1BA711" @click.native="friendRequest"/>
     </div>
   </div>
 </template>
@@ -54,6 +54,9 @@ export default {
     this.$store.dispatch('achievements/fetchAll');
   },
   methods: {
+    friendRequest() {
+      this.$store.dispatch('user/friendRequest', this.$route.params.id)
+    }
   }
 }
 </script>

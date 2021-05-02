@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen">
-    <div v-masonry transition-duration="3s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
-      <div v-masonry-tile class="item" :key="index" v-for="(image, index) in images" :class="randomImageClass()">
-        <img :src="require(`~/assets/img/${image.name}`)">
+    <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
+      <div v-masonry-tile class="item" :key="index" v-for="(image, index) in images" :class="randomImageClass(index)">
+        <img :src="require(`~/assets/img/${image.name}`)" class="rounded-2xl">
       </div>
     </div>
   </div>
@@ -25,24 +25,27 @@ export default {
         { name: 'cake.jpg' },
         { name: 'meditation.jpg' },
         { name: 'register-bg.jpg' },
+        { name: 'register-bg.jpg' },
       ],
-      // wOptions: [ 2, 1, 1, 1, 3 ]
+      woOptions: []
     }
   },
 
   mounted () {
-    if (typeof this.$redrawVueMasonry === 'function') {
-      this.$redrawVueMasonry()
-    }
+    // if (typeof this.$redrawVueMasonry === 'function') {
+    //   this.$redrawVueMasonry()
+    // }
   },
-
   methods: {
-    randomImageClass () {
-
-      const index = Math.floor(Math.random() * this.wOptions.length)
-      const width = ' grid-item-' + this.wOptions[index];
-      this.wOptions.splice(index, 1);
-
+    randomImageClass (t) {
+      let width = '';
+      if (t === this.images.length - 1) {
+        width = ' grid-item-1';
+      } else {
+        const index = Math.floor(Math.random() * this.wOptions.length)
+        width = ' grid-item-' + this.wOptions[index];
+        this.wOptions.splice(index, 1);
+      }
       return 'style' + Math.floor(Math.random() * 10 + 1) + width;
     }
   },
@@ -90,8 +93,7 @@ export default {
 }
 
 .item {
-  padding-left: 5px;
-  padding-top: 5px;
+  padding: 5px;
 }
 
 </style>
