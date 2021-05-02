@@ -52,7 +52,8 @@ export default {
     "~/plugins/vee-validate",
     '~/plugins/echo.js',
     '~/plugins/chat-scroll.js',
-    '~/plugins/vue-datepicker'
+    '~/plugins/vue-datepicker',
+    { src: '~/plugins/vue-masonry', ssr: false }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

@@ -63,11 +63,6 @@ export default {
       return this.$store.getters['challenge/errors'];
     },
 
-    /*completeChallengeDescription () {
-      const date = new Date();
-      return `${this.$auth.user.name} completed the challenge ${this.challenge.challenge.title} at ${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
-    },*/
-
   },
   methods: {
     previewImage (e) {
