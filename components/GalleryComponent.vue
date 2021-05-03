@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
     <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
-      <div v-masonry-tile class="item" :key="index" v-for="(challenge, index) in completedChallenges" :class="randomImageClass(index)">
+      <div v-masonry-tile class="item" :key="index" v-for="(challenge, index) in completedChallenges" :class="randomImageClass(index)" @click="challengeDetail(challenge.id)">
         <img :src="challenge.image || require(`~/assets/img/${challenge.challenge.image}.jpg`)" class="rounded-2xl">
       </div>
     </div>
@@ -13,20 +13,6 @@
 export default {
   data() {
     return {
-      images: [
-        { name: 'forest.jpg' },
-        { name: 'cake.jpg' },
-        { name: 'meditation.jpg' },
-        { name: 'forest.jpg' },
-        { name: 'forest.jpg' },
-        { name: 'cake.jpg' },
-        { name: 'meditation.jpg' },
-        { name: 'forest.jpg' },
-        { name: 'cake.jpg' },
-        { name: 'meditation.jpg' },
-        { name: 'register-bg.jpg' },
-        { name: 'register-bg.jpg' },
-      ],
       woOptions: []
     }
   },
@@ -46,6 +32,13 @@ export default {
         this.wOptions.splice(index, 1);
       }
       return 'style' + Math.floor(Math.random() * 10 + 1) + width;
+    },
+
+    challengeDetail (id) {
+      this.$router.push({
+        name: 'challenges-completed-id',
+        params: {id: id}
+      })
     }
   },
   computed: {
