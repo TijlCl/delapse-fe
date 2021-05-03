@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-xl overflow-hidden md:w-50 shadow-2xl inline-block">
+  <div class="overflow-hidden md:w-50 shadow-2xl inline-block" v-bind:class="rounded ? 'rounded-xl' : ''">
     <div class="md:flex challenge-container">
       <img class="h-48 w-full object-cover" :src="require(`~/assets/img/${img}.jpg`)" :alt="alt">
       <div class="text-block">
@@ -24,6 +24,10 @@ export default {
     caption: {
       type: String,
       required: false
+    },
+    rounded: {
+      type: Boolean,
+      default: true
     },
     alt: {
       type: String,

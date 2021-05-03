@@ -3,7 +3,7 @@
     <TopNav v-if="challenge" dark :pageTitle="challenge.challenge.title" :line="false"></TopNav>
     <TopNav v-else dark pageTitle="'Challenge'"></TopNav>
 
-    <ActivityCard class="" :img="challenge.challenge.image" :title="challenge.challenge.description"/>
+    <ActivityCard class="" :img="challenge.challenge.image" :title="challenge.challenge.description" :rounded="false"/>
 
     <form @submit.prevent="completeChallenge">
       <div class="mx-5">
