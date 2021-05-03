@@ -1,8 +1,13 @@
 <template>
-  <div class="min-h-screen">
-    <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
-      <div v-masonry-tile class="item" :key="index" v-for="(image, index) in images" :class="randomImageClass(index)">
-        <img :src="require(`~/assets/img/${image.name}`)" class="rounded-2xl">
+  <div>
+    <TopNav pageTitle="Gallery" dark></TopNav>
+    <div class="min-h-screen">
+
+
+      <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
+        <div v-masonry-tile class="item" :key="index" v-for="(image, index) in images" :class="randomImageClass(index)">
+          <img :src="require(`~/assets/img/${image.name}`)" class="rounded-2xl">
+        </div>
       </div>
     </div>
   </div>
@@ -37,9 +42,13 @@ export default {
     // }
   },
   methods: {
-    randomImageClass (t) {
+    randomImageClass (imageNumber) {
       let width = '';
-      if (t === this.images.length - 1) {
+      if (this.images.length < 3) {
+        width = ' grid-item-4';
+      } else if (this.images.length < 6) {
+        width = ' grid-item-3';
+      } else if (imageNumber === this.images.length - 1) {
         width = ' grid-item-1';
       } else {
         const index = Math.floor(Math.random() * this.wOptions.length)
@@ -88,8 +97,11 @@ export default {
 }
 
 .grid-item-3 {
+  width: 50%;
+}
+
+.grid-item-4 {
   width: 99%;
-  max-height: 50vh;
 }
 
 .item {
