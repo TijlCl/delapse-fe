@@ -68,7 +68,26 @@ export default {
 
   fontawesome: {
     icons: {
-      solid: ['faHome', 'faKey', 'faUser', 'faEnvelopeOpen', 'faLock', 'faArrowRight', 'faPlus', 'faArrowLeft', 'faCalendarAlt', 'faBookOpen', 'faChevronDown', 'faTrash', 'faSearch', 'faUserPlus', 'faUpload'],
+      solid: [
+        'faHome',
+        'faKey',
+        'faUser',
+        'faEnvelopeOpen',
+        'faLock',
+        'faArrowRight',
+        'faPlus',
+        'faArrowLeft',
+        'faCalendarAlt',
+        'faBookOpen',
+        'faChevronDown',
+        'faTrash',
+        'faSearch',
+        'faUserPlus',
+        'faUpload',
+        'faComment',
+        'faImage',
+        'faMapMarkerAlt',
+      ],
     }
   },
 

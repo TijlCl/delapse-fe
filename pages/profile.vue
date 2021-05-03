@@ -29,6 +29,8 @@
     <div class="mt-6 px-16">
       <Button title="I need help!" color="#1BA711"/>
     </div>
+
+    <bottom-nav />
   </div>
 </template>
 
