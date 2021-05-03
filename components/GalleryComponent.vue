@@ -1,8 +1,8 @@
 <template>
   <div class="min-h-screen">
     <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
-      <div v-masonry-tile class="item" :key="index" v-for="(image, index) in images" :class="randomImageClass(index)">
-        <img :src="require(`~/assets/img/${image.name}`)" class="rounded-2xl">
+      <div v-masonry-tile class="item" :key="index" v-for="(challenge, index) in completedChallenges" :class="randomImageClass(index)">
+        <img :src="challenge.image || require(`~/assets/img/${challenge.challenge.image}.jpg`)" class="rounded-2xl">
       </div>
     </div>
   </div>
@@ -31,19 +31,14 @@ export default {
     }
   },
 
-  mounted () {
-    // if (typeof this.$redrawVueMasonry === 'function') {
-    //   this.$redrawVueMasonry()
-    // }
-  },
   methods: {
     randomImageClass (imageNumber) {
       let width = '';
-      if (this.images.length < 3) {
+      if (this.completedChallenges.length < 3) {
         width = ' grid-item-4';
-      } else if (this.images.length < 6) {
+      } else if (this.completedChallenges.length < 6) {
         width = ' grid-item-3';
-      } else if (imageNumber === this.images.length - 1) {
+      } else if (imageNumber === this.completedChallenges.length - 1) {
         width = ' grid-item-1';
       } else {
         const index = Math.floor(Math.random() * this.wOptions.length)
@@ -55,14 +50,17 @@ export default {
   },
   computed: {
     wOptions() {
-      return this.images.map(function (image, index) {
+      return this.completedChallenges.map(function (challenge, index) {
         if (index % 5 === 0) {
           return 2;
         } else {
           return 1;
         }
       })
-    }
+    },
+    completedChallenges() {
+      return this.$store.getters['completedChallenges/completedChallenges'];
+    },
   }
 }
 </script>

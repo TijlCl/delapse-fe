@@ -7,6 +7,7 @@ import challenges from "./challenges"
 import challenge from "./challenge"
 import users from "./users"
 import user from "./user"
+import completedChallenges from "./completed-challenges"
 
 export default {
   chat,
@@ -17,5 +18,6 @@ export default {
   challenge,
   achievements,
   users,
-  user
+  user,
+  completedChallenges
 };

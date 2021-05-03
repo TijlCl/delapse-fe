@@ -44,7 +44,7 @@ export default {
   },
   async fetch ({ store }) {
     await store.dispatch('events/fetchAll');
-    await store.dispatch('challenges/fetchAll');
+    await store.dispatch('challenges/fetchActive');
   },
   methods: {
     logout() {

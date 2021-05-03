@@ -4,7 +4,8 @@
       <label>
         <textarea
           v-model="val"
-          class="w-full self-center text-xl outline-none bg-transparent placeholder-opacity-75 border-b-4 resize-none h-12"
+          rows="2"
+          class="w-full self-center text-xl outline-none bg-transparent placeholder-opacity-75 border-b-4 resize-none"
           v-bind:class="icon ? '' : 'px-3'"
           :placeholder="placeholder"
         ></textarea>

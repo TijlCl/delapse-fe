@@ -9,8 +9,14 @@
 
 export default {
   data() {
+    return {
+    }
   },
   methods: {
+  },
+
+  async fetch ({ store }) {
+    await store.dispatch('completedChallenges/fetchCompleted');
   },
 }
 </script>
