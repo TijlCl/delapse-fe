@@ -65,8 +65,8 @@ export default {
 .active {
   background: #38a169;
   border-radius: 50%;
-  width: 30pt;
-  height: 30pt;
+  width: 25pt;
+  height: 25pt;
   align-self: center;
 
 }
