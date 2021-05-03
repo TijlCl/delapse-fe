@@ -23,6 +23,9 @@ export default {
       store: 'chat',
     }
   },
+  beforeDestroy() {
+    Echo.leave(`message.${this.$auth.user.id}`);
+  },
   computed: {
     messages() {
       return this.$store.getters['chat/messages'];
@@ -40,6 +43,7 @@ export default {
     await this.fetchChat();
     Echo.private(`message.${this.$auth.user.id}`).listen(".new-message", e => {
       this.$store.commit('chat/addMessage', {body: e.message.body, isSender: false});
+      this.markAsRead(e.message.id);
     });
     // this.scrollToBottom();
   },
@@ -52,6 +56,9 @@ export default {
       //scroll to bottom when a new message is added
       let objDiv = document.getElementById("scroll");
       objDiv.scrollTop = objDiv.scrollHeight;
+    },
+    markAsRead(messageId) {
+      this.$store.dispatch('chat/markMessageAsRead', messageId);
     }
   }
 }
