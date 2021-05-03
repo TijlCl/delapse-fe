@@ -21,6 +21,7 @@
                 :user="user"
                 class="my-3" @click.native="userClicked(user)"/>
     </div>
+    <bottom-nav active="chat"/>
   </div>
 </template>
 

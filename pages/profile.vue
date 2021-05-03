@@ -30,7 +30,7 @@
       <Button title="I need help!" color="#1BA711"/>
     </div>
 
-    <bottom-nav />
+    <bottom-nav active="profile"/>
   </div>
 </template>
 

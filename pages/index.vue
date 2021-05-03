@@ -23,6 +23,7 @@
     </div>
 
     <!--    <Button title="LOGOUT" @click.native="logout" />-->
+    <bottom-nav active="home"/>
   </div>
 </template>
 
