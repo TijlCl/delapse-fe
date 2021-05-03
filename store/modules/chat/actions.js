@@ -13,5 +13,9 @@ export default {
   },
   async addEvent(context) {
     this.$axios.put('/api/v1/chats')
-  }
+  },
+  async markMessageAsRead(context, messageId) {
+    this.$axios.put(`/api/v1/chats/message-read/${messageId}`)
+  },
+
 }

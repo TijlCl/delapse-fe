@@ -3,11 +3,11 @@
     <span class="mr-3 rounded-full h-10 w-10 flex items-center justify-center bg-gray-400">
       <font-awesome-icon icon="user" class="text-white"/>
     </span>
-    <div class="flex-grow p-3">
-      <div class="font-semibold text-gray-700">
+    <div class="flex-grow p-3" v-bind:class="hasUnreadMessage ? 'unread' : 'read'">
+      <div>
         {{ friend.user.name }}
       </div>
-      <div class="text-sm text-gray-500">
+      <div class="text-xs">
         {{ lastMessage }}
       </div>
     </div>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import { isNil } from 'lodash'
+
 export default {
   props: {
     friend: {
@@ -29,7 +31,22 @@ export default {
   computed: {
     lastMessage() {
       return this.friend.chat?.lastMessage?.body;
+    },
+    hasUnreadMessage() {
+      return isNil(this.friend.chat?.lastMessage) ? false : this.friend.chat?.lastMessage?.isUnread;
     }
   }
 }
 </script>
+
+<style scoped>
+.read {
+  font-weight: bold;
+  color: gray;
+}
+
+.unread {
+  font-weight: bolder;
+  color: black;
+}
+</style>
