@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
 
-    <div class="header-background h-48 flex flex-wrap content-end shadow mb-10">
+    <div class="header-background h-48 flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
       <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
 
@@ -42,6 +42,12 @@ export default {
     challenges() {
       return this.$store.getters['challenges/challenges'];
     },
+    homeBackground() {
+      const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
+      }
+    }
   },
   async fetch ({ store }) {
     await store.dispatch('events/fetchAll');
@@ -71,7 +77,6 @@ export default {
 
 
 .header-background{
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~assets/img/home-header-bg.jpg"), no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

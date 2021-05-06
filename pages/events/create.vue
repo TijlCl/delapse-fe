@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen add-event-bg">
+  <div class="min-h-screen add-event-bg" :style="pageBackground">
     <TopNav pageTitle="Add event"></TopNav>
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
@@ -45,6 +45,12 @@ export default {
     errors() {
       return this.$store.getters['events/errors'];
     },
+    pageBackground() {
+      const imgUrl = this.$img('/img/add-event-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `url('${imgUrl}')`
+      }
+    }
   },
   methods: {
     async storeEvent() {
@@ -68,7 +74,6 @@ export default {
 
 <style scoped>
 .add-event-bg {
-  background: url('~assets/img/add-event-bg.jpg'), no-repeat;
   background-size: 110% 125%
 }
 </style>
