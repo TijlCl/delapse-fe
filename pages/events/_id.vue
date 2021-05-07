@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen add-event-bg">
+  <div class="min-h-screen add-event-bg" :style="pageBackground">
 
     <TopNav pageTitle="Edit event">
       <font-awesome-icon class="text-xl text-red-700" @click="showDeleteModal" icon="trash"/>
@@ -95,6 +95,13 @@ export default {
 
     errors() {
       return this.$store.getters['event/errors'];
+    },
+
+    pageBackground() {
+      const imgUrl = this.$img('/img/add-event-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `url('${imgUrl}')`
+      }
     }
   },
   methods: {
@@ -135,7 +142,6 @@ export default {
 
 <style scoped>
 .add-event-bg {
-  background: url('~assets/img/add-event-bg.jpg'), no-repeat;
   background-size: 110% 125%
 }
 </style>

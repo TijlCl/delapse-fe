@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen">
-    <div class="header-background h-64 flex flex-wrap justify-center shadow">
+    <div class="h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
       <TopNav :line="false" />
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
@@ -48,6 +48,12 @@ export default {
     },
     user() {
       return this.$store.getters['user/user'];
+    },
+    headerBackground() {
+      const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
+      }
     }
   },
   mounted() {
@@ -64,7 +70,6 @@ export default {
 
 
 .header-background{
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("~assets/img/home-header-bg.jpg"), no-repeat;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

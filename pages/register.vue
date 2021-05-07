@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200 register-bg">
+  <div class="min-h-screen bg-gray-200 register-bg" :style="pageBackgroundImage">
     <div class="pt-20 mb-24 mx-auto flex items-center justify-center">
       <h1 class="register-title">Delapse</h1>
     </div>
@@ -48,6 +48,16 @@ export default {
       error: null,
     }
   },
+
+  computed: {
+    pageBackgroundImage() {
+      const imgUrl = this.$img('/img/register-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `url('${imgUrl}')`
+      }
+    }
+  },
+
   methods: {
     async register() {
       this.error = null;
@@ -71,7 +81,6 @@ export default {
 </script>
 <style scoped>
 .register-bg{
-  background: url('~assets/img/register-bg.jpg');
   background-repeat: no-repeat;
   background-size: 110% 100%
 }

@@ -63,7 +63,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    '@nuxt/image'
   ],
 
   fontawesome: {
@@ -194,5 +195,10 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
+  },
+
+  // allow images from api
+  image: {
+    domains: [process.env.API_URL]
   }
 }

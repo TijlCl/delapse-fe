@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200 login-bg">
+  <div class="min-h-screen bg-gray-200 login-bg" :style="pageBackgroundImage">
     <div class="pt-20 mb-24 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
     </div>
@@ -61,12 +61,20 @@ export default {
         .catch((e) => (this.error = 'Incorrect email or password.'))
     },
   },
+
+  computed: {
+    pageBackgroundImage() {
+      const imgUrl = this.$img('/img/login-bg.jpg', { width: 400 })
+      return {
+        backgroundImage: `url('${imgUrl}')`
+      }
+    }
+  }
 }
 </script>
 
 <style scoped>
 .login-bg{
-  background: url('~assets/img/login-bg.jpg');
   background-repeat: no-repeat;
   background-size: 110% 125%
 }

@@ -1,7 +1,7 @@
 <template>
   <div class="overflow-hidden md:w-50 shadow-2xl inline-block" v-bind:class="rounded ? 'rounded-xl' : ''">
     <div class="md:flex challenge-container">
-      <img class="h-48 w-full object-cover" :src="require(`~/assets/img/${img}.jpg`)" :alt="alt">
+      <nuxt-img class="h-48 w-full object-cover" :src="`/img/${img}.jpg`" width="400" :alt="alt" />
       <div class="text-block">
         <div class="uppercase tracking-wide text-sm text-center text-white font-semibold">{{ title }}</div>
         <p class="text-white">{{ caption }}</p>

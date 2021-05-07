@@ -1,7 +1,7 @@
 <template>
   <div class="rounded-xl overflow-hidden w-3/4 shadow-lg inline-block mr-3">
     <div class="md:flex challenge-container">
-        <img class="h-48 w-full object-cover" :src="require(`~/assets/img/${img}.jpg`)" :alt="alt">
+      <nuxt-img class="h-48 w-full object-cover" :src="`/img/${img}.jpg`" width="400" :alt="alt" />
       <div class="text-block">
         <div class="uppercase tracking-wide text-sm text-center text-white font-semibold">{{ title }}</div>
         <p class="text-white overflow-hidden">{{ caption }}</p>
