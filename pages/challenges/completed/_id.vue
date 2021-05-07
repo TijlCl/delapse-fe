@@ -3,7 +3,7 @@
     <TopNav v-if="challenge" dark pageTitle="Challenge" :line="false"></TopNav>
 
     <div class="overflow-hidden w-full inline-block mr-3 shadow-lg">
-        <img :src="challenge.image || require(`~/assets/img/${challenge.challenge.image}.jpg`)" class="h-64 object-contain w-full">
+      <nuxt-img width="400"  :src="challenge.image || `/img/${challenge.challenge.image}.jpg`" class="h-64 object-contain w-full" />
     </div>
 
     <div class="mx-6">

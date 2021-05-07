@@ -1,7 +1,7 @@
 <template>
   <div class="rounded-xl overflow-hidden h-20 inline-block shadow-lg mr-3 event-card">
     <div class="md:flex relative h-full">
-      <img class="object-cover h-auto" :src="require(`~/assets/img/${img}.jpg`)" alt="event background image">
+      <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="400" alt="event background image" />
       <div class="text-block">
         <p class="text-xs text-white text-center">{{ title }}</p>
       </div>
