@@ -1,7 +1,9 @@
 <template>
   <div class="min-h-screen">
     <div class="header-background h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
-      <TopNav :line="false" />
+      <TopNav :line="false" arrowColour="white">
+        <font-awesome-icon class="text-white" @click="" icon="cog"/>
+      </TopNav>
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
         <div class="w-1/2 pb-10 flex flex-col items-center content-center justify-center">
