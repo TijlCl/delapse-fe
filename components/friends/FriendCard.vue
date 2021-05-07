@@ -7,7 +7,7 @@
       <div>
         {{ friend.user.name }}
       </div>
-      <div class="text-xs">
+      <div class="text-xs" v-if="showLastMessage">
         {{ lastMessage }}
       </div>
     </div>
@@ -22,6 +22,10 @@ export default {
     friend: {
       type: Object,
       default: () => {}
+    },
+    showLastMessage: {
+      type: Boolean,
+      default: true
     }
   },
   data() {

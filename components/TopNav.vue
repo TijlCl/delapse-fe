@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center" v-bind:class="line ? 'bottom-border' : ''">
+  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center container" v-bind:class="line ? 'bottom-border' : ''">
     <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-2xl back-arrow" icon="arrow-left"/>
-    <h2 class="page-title whitespace-pre justify-self-center" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</h2>
+    <h2 class="page-title justify-self-center" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</h2>
     <div class="justify-self-end self-center mr-5">
       <slot></slot>
     </div>
@@ -38,8 +38,16 @@ export default {
 
 <style scoped>
 
+.container {
+  grid-template-columns: 15% 70% 15% !important;
+}
+
 .page-title{
   font-size: 16pt;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 100%;
 }
 
 .back-arrow{

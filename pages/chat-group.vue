@@ -1,10 +1,10 @@
 <template>
   <div>
     <TopNav :pageTitle="title" dark>
-      <font-awesome-icon icon="user-plus" class="search" @click="creatingGroup = true"/>
+      <font-awesome-icon icon="user-plus" class="search" @click="addingUser = true"/>
     </TopNav>
 
-    <div v-if="!creatingGroup">
+    <div v-if="!addingUser">
       <ul class="chat-messages" id="scroll">
         <li v-for="message in messages">
           <ChatMessageUser v-if="message.isSender" :text="message.body" />
@@ -12,7 +12,7 @@
         </li>
       </ul>
       <div class="w-full absolute bottom-0 mb-4">
-        <ChatInput />
+        <GroupChatInput :id="chatId" />
       </div>
     </div>
 
@@ -25,30 +25,38 @@
 <script>
 import resetStateOnLeave from "~/mixins/resetStateOnLeave";
 import FriendCard from "~/components/friends/FriendCard";
+import GroupChatInput from "@/components/chat/GroupChatInput";
 
 export default {
   mixins: [resetStateOnLeave],
   components: {
     FriendCard,
+    GroupChatInput
   },
   data() {
     return {
-      store: 'chat',
-      creatingGroup: false
+      store: 'chat-group',
+      addingUser: false
     }
   },
   beforeDestroy() {
-    Echo.leave(`message.${this.$auth.user.id}`);
+    Echo.leave(`group-message.${this.chatId}`);
   },
   computed: {
     friends () {
       return this.$store.getters['friends/friends'];
     },
+    chatId() {
+      return this.$store.getters['chatGroup/id']
+    },
     messages() {
-      return this.$store.getters['chat/messages'];
+      return this.$store.getters['chatGroup/messages'];
+    },
+    users() {
+      return this.$store.getters['chatGroup/users'];
     },
     title() {
-      return this.$route.params.friendName
+      return this.users.map((user) => user.name).join(', ');
     }
   },
   watch: {
@@ -58,16 +66,15 @@ export default {
   },
   async mounted() {
     await this.fetchChat();
-    Echo.private(`message.${this.$auth.user.id}`).listen(".new-message", e => {
-      this.$store.commit('chat/addMessage', {body: e.message.body, isSender: false});
-      this.markAsRead(e.message.id);
+    Echo.private(`group-message.${this.chatId}`).listen(".new-group-message", e => {
+      if(e.message.senderId !== this.$auth.user.id) {
+        this.$store.commit('chatGroup/addMessage', {body: e.message.body, isSender: false});
+      }
     });
-    // this.scrollToBottom();
   },
   methods: {
     async fetchChat() {
-      const user = this.$route.params.friendId;
-      await this.$store.dispatch('chat/fetch', user);
+     await this.$store.dispatch('chatGroup/fetch', this.$route.params.id);
     },
     scrollToBottom() {
       //scroll to bottom when a new message is added
@@ -77,9 +84,8 @@ export default {
     markAsRead(messageId) {
       this.$store.dispatch('chat/markMessageAsRead', messageId);
     },
-    addToGroup(friendToAddID) {
-      const currentFriendId = this.$route.params.friendId;
-      this.$store.dispatch('chatGroups/create', [friendToAddID, currentFriendId])
+    addToGroup(friendId) {
+      this.$store.dispatch('chatGroup/addUser', friendId)
     }
   }
 }

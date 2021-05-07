@@ -5,14 +5,19 @@
         <font-awesome-icon icon="search" class="search" @click="startSearch"/>
       </TopNav>
       <nav class="flex flex-row mb-4">
-        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none border-b-2 font-medium border-gray-600">
+        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none font-medium" @click="focus('chats')" v-bind:class="display === 'chats' ? 'border-b-2 border-gray-600' : ''">
           Chats
         </button>
-        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none">
+        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none" @click="focus('chat_groups')" v-bind:class="display === 'chat_groups' ? 'border-b-2 border-gray-600' : ''">
           Chat groups
         </button>
       </nav>
-      <FriendCard v-for="(friend, i) in friends" :key="i" :friend="friend" @click.native="openChat(friend)"/>
+      <div v-if="display === 'chats'">
+        <FriendCard v-for="(friend, i) in friends" :key="i" :friend="friend" @click.native="openChat(friend)"/>
+      </div>
+      <div v-else>
+        <ChatGroupCard v-for="(chatGroup, i) in chatGroups" :key="i" :id="chatGroup.id" @click.native="openChatGroup(chatGroup.id)"/>
+      </div>
     </div>
     <div v-show="searching">
       <ContactSearch ref="search" :focusInput="focusInput" @done="doneSearching" />
@@ -28,18 +33,21 @@
 <script>
 import FriendCard from "~/components/friends/FriendCard";
 import UserCard from "~/components/friends/UserCard";
+import ChatGroupCard from "~/components/friends/ChatGroupCard";
 import Vue from 'vue';
 
 export default {
   name: "friends",
   components: {
     FriendCard,
-    UserCard
+    UserCard,
+    ChatGroupCard
   },
   data() {
     return {
       searching: false,
       focusInput: false,
+      display: 'chats'
     }
   },
   computed: {
@@ -49,15 +57,28 @@ export default {
     users () {
       return this.$store.getters['users/users'];
     },
+    chatGroups () {
+      return this.$store.getters['chatGroups/chatGroups'];
+    },
   },
   mounted() {
     this.$store.dispatch('friends/fetchAll');
+    this.$store.dispatch('chatGroups/fetchAll');
   },
   methods: {
+    focus(target) {
+      this.display = target;
+    },
     openChat(friend) {
       this.$router.push({
         name: 'chat',
         params: {friendId: friend.user.id, friendName: friend.user.name }
+      })
+    },
+    openChatGroup(id) {
+      this.$router.push({
+        name: 'chat-group',
+        params: {id: id }
       })
     },
     startSearch() {
