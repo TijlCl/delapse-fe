@@ -2,6 +2,7 @@
   <div class="min-h-screen bg-gray-200 login-bg" :style="pageBackgroundImage">
     <div class="pt-20 mb-24 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
+      <p class=" ml-1 self-end mb-2 text-white text-xs">Retake life.</p>
     </div>
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
