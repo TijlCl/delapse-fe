@@ -1,4 +1,11 @@
 export default {
+  async fetch (context) {
+    if(context.getters['isEmpty']) {
+      const {data} = await this.$axios.get(`/api/v1/user-settings`);
+      context.commit('setSettings', data.data);
+    }
+  },
+
   async changeProfilePicture (context, profilePicture) {
     const config = {
       headers: { 'content-type': 'multipart/form-data' }

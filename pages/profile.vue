@@ -2,7 +2,9 @@
   <div class="min-h-screen">
     <div class="header-background h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
       <TopNav :line="false" arrowColour="white">
-        <font-awesome-icon class="text-white" @click="" icon="cog"/>
+        <NuxtLink  to="/settings">
+          <font-awesome-icon class="text-white" icon="cog"/>
+        </NuxtLink>
       </TopNav>
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
