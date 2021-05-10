@@ -2,7 +2,7 @@
   <div class="min-h-screen add-event-bg" :style="pageBackground">
 
     <TopNav pageTitle="Edit event">
-      <font-awesome-icon class="text-xl text-red-700" @click="showDeleteModal" icon="trash"/>
+      <font-awesome-icon class="icon-color" @click="showDeleteModal" icon="trash"/>
     </TopNav>
 
     <WarningModal title="Delete event" v-show="deleteModalVisible" @close="closeDeleteModal">
@@ -143,5 +143,9 @@ export default {
 <style scoped>
 .add-event-bg {
   background-size: 110% 125%
+}
+
+.icon-color{
+  color: #089082;
 }
 </style>

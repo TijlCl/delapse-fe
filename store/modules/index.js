@@ -10,6 +10,7 @@ import user from "./user"
 import completedChallenges from "./completed-challenges"
 import chatGroups from "./chat-groups"
 import chatGroup from "./chat-group"
+import userSettings from "./user-settings"
 
 export default {
   chat,
@@ -23,5 +24,6 @@ export default {
   completedChallenges,
   user,
   chatGroups,
-  chatGroup
+  chatGroup,
+  userSettings
 };

@@ -88,6 +88,8 @@ export default {
         'faComment',
         'faImage',
         'faMapMarkerAlt',
+        'faExclamationTriangle',
+        'faCog',
       ],
     }
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center container" v-bind:class="line ? 'bottom-border' : ''">
-    <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-2xl back-arrow" icon="arrow-left"/>
+    <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-xl" icon="arrow-left" v-bind:style="{ color: arrowColour }"/>
     <h2 class="page-title justify-self-center" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</h2>
     <div class="justify-self-end self-center mr-5">
       <slot></slot>
@@ -22,7 +22,11 @@ export default {
     line: {
       type: Boolean,
       default: true
-    }
+    },
+    arrowColour: {
+      type: String,
+      default: '#089082'
+    },
   },
   data() {
     return {
@@ -48,10 +52,6 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   max-width: 100%;
-}
-
-.back-arrow{
-  color: #089082;
 }
 
 .bottom-border{
