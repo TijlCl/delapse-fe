@@ -10,7 +10,7 @@
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
           <h1 class="w-full text-white text-right pr-2">Days clean</h1>
-          <h2 class="w-full text-white text-right pr-2 font-bold text-xl">0</h2>
+          <h2 class="w-full text-white text-right pr-2 font-bold text-xl">100</h2>
         </div>
       </div>
     </div>
