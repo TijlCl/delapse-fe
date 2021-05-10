@@ -18,7 +18,10 @@
         <div class="w-1/4"></div>
         <div class="w-1/2 flex flex-col items-center content-center justify-center">
           <label for="file-input" class="flex justify-center imagePreview">
-            <nuxt-img width="200"  :src="userImage" class="object-cover w-20 h-20 mr-2 rounded-full profile-image" alt="Profile image"/>
+            <nuxt-img v-if="userImage" width="200"  :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image" alt="Profile image"/>
+            <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border">
+              <font-awesome-icon class="rounded-full text-4xl mx-auto" icon="user"/>
+            </div>
           </label>
 
             <input id="file-input" ref="image" type="file" @change="uploadProfilePicture" class="hidden" accept="image/*">
@@ -143,10 +146,15 @@ export default {
 .profile-image{
   position: relative;
   bottom: -50%;
+  border: 3px solid white;
 }
 
 .input-errors{
   font-weight: bold;
   color: #ff0000;
+}
+
+.no-border{
+  border-width: 0;
 }
 </style>
