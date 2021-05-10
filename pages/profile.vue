@@ -6,15 +6,32 @@
       </TopNav>
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
-        <div class="w-1/2 pb-10 flex flex-col items-center content-center justify-center">
+        <div class="w-1/2 flex flex-col items-center content-center justify-center">
           <h1 class="name m-2">{{ userName[0].toUpperCase() + userName.substring(1) }}</h1>
           <h2 class="location">Brussels, Belgium</h2>
+        </div>
+        <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
+
+        </div>
+      </div>
+      <div class="flex row-auto w-full">
+        <div class="w-1/4"></div>
+        <div class="w-1/2 flex flex-col items-center content-center justify-center">
+          <label for="file-input" class="flex justify-center imagePreview">
+            <nuxt-img width="200"  :src="userImage" class="object-cover w-20 h-20 mr-2 rounded-full profile-image" alt="Profile image"/>
+          </label>
+
+            <input id="file-input" ref="image" type="file" @change="uploadProfilePicture" class="hidden" accept="image/*">
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
           <h1 class="w-full text-white text-right pr-2">Days clean</h1>
           <h2 class="w-full text-white text-right pr-2 font-bold text-xl">0</h2>
         </div>
       </div>
+    </div>
+
+    <div class="mt-10">
+      <span v-for="(apiError, i) in errors.image" :key="i" class="input-errors pl-2">{{ apiError }}</span>
     </div>
 
     <div id="events" class="scroll-right ml-5 mt-16 mb-6">
@@ -42,6 +59,7 @@ export default {
   data() {
     return {
       userName : this.$auth.user.name,
+      userImage : this.$auth.user.image,
     }
   },
   computed: {
@@ -53,12 +71,26 @@ export default {
       return {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
       }
-    }
+    },
+    errors() {
+      return this.$store.getters['userSettings/errors'];
+    },
   },
   mounted() {
     this.$store.dispatch('achievements/fetchAll');
   },
   methods: {
+    async uploadProfilePicture(event) {
+      if (event.target.files.length){
+        const file = event.target.files[0];
+        let formData = new FormData();
+
+        formData.append("image", file);
+        await this.$store.dispatch('userSettings/changeProfilePicture', formData).then(response => {
+          this.userImage = response
+        })
+      }
+    }
   }
 }
 </script>
@@ -79,7 +111,7 @@ export default {
 .name{
   color: white;
   font-size: 24pt;
-  max-height: 30%;
+  max-height: 40%;
   white-space: pre;
 }
 
@@ -106,5 +138,15 @@ export default {
   font-weight: lighter;
   color: #707070;
   position: fixed;
+}
+
+.profile-image{
+  position: relative;
+  bottom: -50%;
+}
+
+.input-errors{
+  font-weight: bold;
+  color: #ff0000;
 }
 </style>
