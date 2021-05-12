@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen add-event-bg" :style="pageBackgroundImage">
-    <TopNav pageTitle="Settings" arrowColour="white"></TopNav>
+    <TopNav pageTitle="Settings" arrowColor="white"></TopNav>
 
   </div>
 </template>

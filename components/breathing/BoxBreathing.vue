@@ -4,11 +4,13 @@
       <span ref="text1">breath In...</span>
       <span ref="text2">hold...</span>
       <span ref="text3">breath out...</span>
+      <span ref="text4">hold...</span>
     </div>
     <div class="item" ref="dot"></div>
     <div class="point-1"></div>
     <div class="point-2"></div>
     <div class="point-3"></div>
+    <div class="point-4"></div>
   </div>
 </template>
 <script>
@@ -79,8 +81,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.375turn
-  ) translate(100px, -3.5px) rotate(0);
+    0.25turn
+  ) translate(106px, -6px) rotate(0);
 }
 
 .point-2 {
@@ -91,8 +93,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.125turn
-  ) translate(109px, -3.5px) rotate(0);
+    0turn
+  ) translate(107px, 8px) rotate(0);
 }
 
 .point-3 {
@@ -104,7 +106,19 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
     0.75turn
-  ) translate(93.5px, 4px) rotate(0);
+  ) translate(93.5px, 8px) rotate(0);
+}
+
+.point-4 {
+  grid-area: 1/1;
+  text-align: center;
+  border-radius: 50%;
+  width: 17px;
+  height: 17px;
+  background: rgba(255, 255, 255, 0.8);
+  transform: rotate(
+    0.5turn
+  ) translate(93.5px, -8px) rotate(0);
 }
 
 @keyframes spin {
@@ -127,39 +141,51 @@ export default {
 }
 .rw-words-1 span:nth-child(2) {
   animation: hold 9s linear infinite 0s;
-  animation-delay: 3s;
+  animation-delay: 2.25s;
 }
 .rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
-  animation-delay: 6s;
+  animation-delay: 4.5s;
+}
+.rw-words-1 span:nth-child(4) {
+  animation: hold2 9s linear infinite 0s;
+  animation-delay: 6.75s;
 }
 
 @keyframes bin {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  28% { opacity: 1; }
-  30% { opacity: 0; }
+  23% { opacity: 1; }
+  27% { opacity: 0; }
 }
 
 @keyframes hold {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  25% { opacity: 1; }
-  28% { opacity: 0; }
+  23% { opacity: 1; }
+  25% { opacity: 0; }
 }
 
 @keyframes bout {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  32% { opacity: 1; }
-  35% { opacity: 0; }
+  20% { opacity: 1; }
+  25% { opacity: 0; }
+}
+
+@keyframes hold2 {
+  0% { opacity: 0; }
+  2% { opacity: 1;}
+  20% { opacity: 1; }
+  25% { opacity: 0; }
 }
 
 @keyframes test {
   0% { border-color: rgba(255, 255, 255, 0.2); }
-  33% { border-color: rgba(255, 255, 255, 0.8); }
+  25% { border-color: rgba(255, 255, 255, 0.8); }
   50% { border-color: rgba(255, 255, 255, 0.8); }
-  80% { border-color: rgba(255, 255, 255, 0.2); }
-
+  75% { border-color: rgba(255, 255, 255, 0.2); }
+  100% { border-color: rgba(255, 255, 255, 0.2); }
 }
+
 </style>

@@ -2,12 +2,10 @@
   <div class="animation" ref="ring">
     <div class="rw-words rw-words-1" ref="text">
       <span ref="text1">breath In...</span>
-      <span ref="text2">hold...</span>
       <span ref="text3">breath out...</span>
     </div>
     <div class="item" ref="dot"></div>
     <div class="point-1"></div>
-    <div class="point-2"></div>
     <div class="point-3"></div>
   </div>
 </template>
@@ -83,18 +81,6 @@ export default {
   ) translate(100px, -3.5px) rotate(0);
 }
 
-.point-2 {
-  grid-area: 1/1;
-  text-align: center;
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  background: rgba(255, 255, 255, 0.8);
-  transform: rotate(
-    0.125turn
-  ) translate(109px, -3.5px) rotate(0);
-}
-
 .point-3 {
   grid-area: 1/1;
   text-align: center;
@@ -126,10 +112,6 @@ export default {
   animation: bin 9s linear infinite 0s;
 }
 .rw-words-1 span:nth-child(2) {
-  animation: hold 9s linear infinite 0s;
-  animation-delay: 3s;
-}
-.rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
   animation-delay: 6s;
 }
@@ -137,15 +119,8 @@ export default {
 @keyframes bin {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  28% { opacity: 1; }
-  30% { opacity: 0; }
-}
-
-@keyframes hold {
-  0% { opacity: 0; }
-  2% { opacity: 1;}
-  25% { opacity: 1; }
-  28% { opacity: 0; }
+  60% { opacity: 1; }
+  63% { opacity: 0; }
 }
 
 @keyframes bout {

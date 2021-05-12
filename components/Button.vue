@@ -1,17 +1,6 @@
 <template>
-  <button class="text-white" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button" v-on:click="animateRipple">
+  <button class="text-white" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button">
     <span v-html="title"></span>
-    <transition-group>
-		<span
-      class="ripple"
-      v-bind:ref="'ripple-' + i"
-      v-bind:key="'ripple' + i"
-      v-for="(val, i) in ripples"
-      v-if="val.show === true"
-      v-bind:style="{'top': val.y + 'px', 'left': val.x + 'px'}"
-      v-on:animationend="rippleEnd(i)">
-		</span>
-    </transition-group>
   </button>
 </template>
 

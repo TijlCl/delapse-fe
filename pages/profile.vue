@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
     <div class="header-background h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
-      <TopNav :line="false" arrowColour="white">
+      <TopNav :line="false" arrowColor="white">
         <font-awesome-icon class="text-white" @click="" icon="cog"/>
       </TopNav>
       <div class="flex row-auto w-full">

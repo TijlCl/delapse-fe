@@ -79,8 +79,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.375turn
-  ) translate(100px, -3.5px) rotate(0);
+    0.32turn
+  ) translate(102px, -3.5px) rotate(0);
 }
 
 .point-2 {
@@ -91,8 +91,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.125turn
-  ) translate(109px, -3.5px) rotate(0);
+    0.98turn
+  ) translate(105px, -3.5px) rotate(0);
 }
 
 .point-3 {
@@ -127,25 +127,25 @@ export default {
 }
 .rw-words-1 span:nth-child(2) {
   animation: hold 9s linear infinite 0s;
-  animation-delay: 3s;
+  animation-delay: 1.8s;
 }
 .rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
-  animation-delay: 6s;
+  animation-delay: 5.2s;
 }
 
 @keyframes bin {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  28% { opacity: 1; }
-  30% { opacity: 0; }
+  15% { opacity: 1; }
+  17% { opacity: 0; }
 }
 
 @keyframes hold {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  25% { opacity: 1; }
-  28% { opacity: 0; }
+  33% { opacity: 1; }
+  36% { opacity: 0; }
 }
 
 @keyframes bout {
