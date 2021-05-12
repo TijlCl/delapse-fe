@@ -90,6 +90,7 @@ export default {
         'faMapMarkerAlt',
         'faExclamationTriangle',
         'faCog',
+        'faPhoneAlt',
       ],
     }
   },

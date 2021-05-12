@@ -1,5 +1,5 @@
 <template>
-  <button class="text-white" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button" v-on:click="animateRipple">
+  <button class="text-white opacity-0" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button" v-on:click="animateRipple">
     <span v-html="title"></span>
     <transition-group>
 		<span
