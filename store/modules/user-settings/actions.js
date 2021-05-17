@@ -19,4 +19,15 @@ export default {
         throw errors;
       });
   },
+
+  async update (context, settings) {
+    await this.$axios.put(`/api/v1/user-settings/update-settings`, settings)
+        .then(response => {
+          context.commit('setErrors', {});
+          context.commit('setSettings', response.data.data);
+        }).catch(errors => {
+          context.commit('setErrors', errors.response.data.errors);
+          throw errors;
+        });
+  },
 }

@@ -1,9 +1,9 @@
 <template>
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
 
-    <div class="flex justify-between items-center rounded-xl border-white border-2 bg-opacity-0" @click="val = !val">
+    <div class="flex justify-between items-center" @click="val = !val">
     <!-- Title -->
-      <h2 class="p-3 text-white">Toggle me</h2>
+      <h2 class="p-3 text-white"> {{title}} </h2>
 
       <div class="p-3">
 
