@@ -1,8 +1,8 @@
 <template>
   <div class="animation" ref="ring">
     <div class="rw-words rw-words-1" ref="text">
-      <span ref="text1">breath In...</span>
-      <span ref="text2">hold...</span>
+      <span ref="text1">breath In belly...</span>
+      <span ref="text2">breath In chest...</span>
       <span ref="text3">breath out...</span>
     </div>
     <div class="item" ref="dot"></div>
@@ -79,8 +79,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.375turn
-  ) translate(100px, -3.5px) rotate(0);
+    0.25turn
+  ) translate(106px, -6px) rotate(0);
 }
 
 .point-2 {
@@ -91,8 +91,8 @@ export default {
   height: 17px;
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
-    0.125turn
-  ) translate(109px, -3.5px) rotate(0);
+    0turn
+  ) translate(107px, 8px) rotate(0);
 }
 
 .point-3 {
@@ -104,7 +104,7 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   transform: rotate(
     0.75turn
-  ) translate(93.5px, 4px) rotate(0);
+  ) translate(93.5px, 8px) rotate(0);
 }
 
 @keyframes spin {
@@ -127,25 +127,25 @@ export default {
 }
 .rw-words-1 span:nth-child(2) {
   animation: hold 9s linear infinite 0s;
-  animation-delay: 3s;
+  animation-delay: 2.25s;
 }
 .rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
-  animation-delay: 6s;
+  animation-delay: 4.5s;
 }
 
 @keyframes bin {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  28% { opacity: 1; }
-  30% { opacity: 0; }
+  23% { opacity: 1; }
+  27% { opacity: 0; }
 }
 
 @keyframes hold {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  25% { opacity: 1; }
-  28% { opacity: 0; }
+  23% { opacity: 1; }
+  25% { opacity: 0; }
 }
 
 @keyframes bout {

@@ -2,11 +2,9 @@
   <div class="animation" ref="ring">
     <div class="rw-words rw-words-1" ref="text">
       <span ref="text1">breath In...</span>
-      <span ref="text2">hold...</span>
       <span ref="text3">breath out...</span>
     </div>
     <div class="item" ref="dot"></div>
-    <div class="point-1"></div>
     <div class="point-2"></div>
     <div class="point-3"></div>
   </div>
@@ -31,13 +29,11 @@ export default {
       if (newVal) {
         this.$refs.dot.style.webkitAnimationPlayState = 'paused';
         this.$refs.text1.style.webkitAnimationPlayState = 'paused';
-        this.$refs.text2.style.webkitAnimationPlayState = 'paused';
         this.$refs.text3.style.webkitAnimationPlayState = 'paused';
         this.$refs.ring.style.webkitAnimationPlayState = 'paused';
       } else {
         this.$refs.dot.style.webkitAnimationPlayState = 'running';
         this.$refs.text1.style.webkitAnimationPlayState = 'running';
-        this.$refs.text2.style.webkitAnimationPlayState = 'running';
         this.$refs.text3.style.webkitAnimationPlayState = 'running';
         this.$refs.ring.style.webkitAnimationPlayState = 'running';
       }
@@ -69,18 +65,6 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   animation: spin 9s linear infinite;
   transform:rotate(-0.25turn) translate(100px) rotate(-0.25turn);
-}
-
-.point-1 {
-  grid-area: 1/1;
-  text-align: center;
-  border-radius: 50%;
-  width: 17px;
-  height: 17px;
-  background: rgba(255, 255, 255, 0.8);
-  transform: rotate(
-    0.375turn
-  ) translate(100px, -3.5px) rotate(0);
 }
 
 .point-2 {
@@ -126,12 +110,8 @@ export default {
   animation: bin 9s linear infinite 0s;
 }
 .rw-words-1 span:nth-child(2) {
-  animation: hold 9s linear infinite 0s;
-  animation-delay: 3s;
-}
-.rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
-  animation-delay: 6s;
+  animation-delay: 3s;
 }
 
 @keyframes bin {
@@ -141,25 +121,16 @@ export default {
   30% { opacity: 0; }
 }
 
-@keyframes hold {
-  0% { opacity: 0; }
-  2% { opacity: 1;}
-  25% { opacity: 1; }
-  28% { opacity: 0; }
-}
-
 @keyframes bout {
   0% { opacity: 0; }
   2% { opacity: 1;}
-  32% { opacity: 1; }
-  35% { opacity: 0; }
+  75% { opacity: 1; }
+  80% { opacity: 0; }
 }
 
 @keyframes test {
   0% { border-color: rgba(255, 255, 255, 0.2); }
   33% { border-color: rgba(255, 255, 255, 0.8); }
-  50% { border-color: rgba(255, 255, 255, 0.8); }
   80% { border-color: rgba(255, 255, 255, 0.2); }
-
 }
 </style>

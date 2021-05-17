@@ -53,6 +53,7 @@ export default {
     '~/plugins/echo.js',
     '~/plugins/chat-scroll.js',
     '~/plugins/vue-datepicker',
+    '~/plugins/vue-carousel',
     { src: '~/plugins/vue-masonry', ssr: false }
   ],
 
@@ -91,6 +92,7 @@ export default {
         'faExclamationTriangle',
         'faCog',
         'faPhoneAlt',
+        'faPlay'
       ],
     }
   },
