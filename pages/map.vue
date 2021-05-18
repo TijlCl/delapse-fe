@@ -1,5 +1,8 @@
 <template>
-  <div class="min-h-screen" id="map"></div>
+  <div class="min-h-screen">
+    <div id="map"></div>
+    <bottom-nav active="map"/>
+  </div>
 </template>
 
 <script>
@@ -86,5 +89,9 @@ export default {
 </script>
 
 <style scoped>
+
+#map{
+  height: 92vh;
+}
 
 </style>

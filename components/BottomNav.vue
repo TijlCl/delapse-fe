@@ -16,7 +16,7 @@
       </NuxtLink>
     </div>
     <div class="flex place-content-center flex-wrap-reverse icon" v-bind:class="isActive('map') ? 'active' : '' ">
-      <NuxtLink to="/">
+      <NuxtLink to="/map">
         <font-awesome-icon icon="map-marker-alt" class="text-green-600" v-bind:class="isActive('map') ? 'active-icon' : '' "/>
       </NuxtLink>
     </div>
