@@ -24,6 +24,7 @@ export default {
     grandClientSecret: process.env.PASSPORT_GRANT_CLIENT_SECRET,
     mixPusherAppKey: process.env.MIX_PUSHER_APP_KEY,
     mixPusherAppCluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
   },
   env: {
     apiURL: process.env.API_URL,
@@ -33,6 +34,7 @@ export default {
     grandClientSecret: process.env.PASSPORT_GRANT_CLIENT_SECRET,
     mixPusherAppKey: process.env.MIX_PUSHER_APP_KEY,
     mixPusherAppCluster: process.env.MIX_PUSHER_APP_CLUSTER,
+    mapboxAccessToken: process.env.MAPBOX_ACCESS_TOKEN,
   },
   privateRuntimeConfig: {
     clientId: process.env.PASSPORT_CLIENT_ID,
