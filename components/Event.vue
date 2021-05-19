@@ -1,11 +1,11 @@
 <template>
   <div class="rounded-xl overflow-hidden h-20 inline-block shadow-lg mr-3 event-card">
-    <div class="md:flex relative h-full">
-      <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="140" alt="event background image" />
+    <div class="relative h-full">
+      <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" sizes="xs:150px sm:150px md:200px" alt="event background image" />
       <div class="text-block">
-        <p class=" text-xs text-white">{{ title }}</p>
+        <p class=" text-xs md:text-base text-white">{{ title }}</p>
         <div class="flex">
-          <label class=" text-2s text-white mr-auto">{{ date }}</label>
+          <label class="text-2s text-white mr-auto">{{ date }}</label>
           <label class=" text-2s text-white ml-auto">{{ tag }}</label>
         </div>
 
@@ -44,7 +44,14 @@ export default {
 <style scoped>
 
 .event-card{
-  width: 140px;
+  width: 9em;
+}
+
+@media only screen and (min-width: 768px) {
+  .event-card {
+    width: 12em;
+    height: 7rem;
+  }
 }
 
 .text-block {
@@ -60,5 +67,12 @@ export default {
 .text-2s{
   font-size: 0.60rem;
   line-height: 1rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .text-2s{
+    font-size: 1rem;
+    line-height: 1rem;
+  }
 }
 </style>

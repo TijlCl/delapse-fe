@@ -1,7 +1,7 @@
 <template>
-  <div class="overflow-hidden md:w-50 shadow-2xl inline-block" v-bind:class="rounded ? 'rounded-xl' : ''">
-    <div class="md:flex challenge-container">
-      <nuxt-img class="h-48 w-full object-cover" :src="`/img/${img}.jpg`" width="400" :alt="alt" />
+  <div class="overflow-hidden shadow-2xl inline-block" v-bind:class="rounded ? 'rounded-xl' : ''">
+    <div class="challenge-container">
+      <nuxt-img class="h-48 md:h-64 w-full object-cover" :src="`/img/${img}.jpg`" sizes="sm:100vw md:100vw lg:100vw" :alt="alt" />
       <div class="text-block">
         <div class="uppercase tracking-wide text-sm text-center text-white font-semibold">{{ title }}</div>
         <p class="text-white">{{ caption }}</p>

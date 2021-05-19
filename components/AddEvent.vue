@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/events/create" class="rounded-xl overflow-hidden h-20 inline-block shadow-lg mr-3 w-20">
+  <NuxtLink to="/events/create" class="rounded-xl overflow-hidden h-20 inline-block shadow-lg mr-3 w-20 add-event-card">
     <div class="md:flex relative h-full">
       <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="140" height="150" alt="event background image" />
       <div class="background-overflow flex justify-center">
@@ -33,5 +33,12 @@ export default {
   background-color: rgba(0, 0, 0, 0.7);
   height: 100%;
   width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .add-event-card {
+    height: 7rem;
+    width: 7rem;
+  }
 }
 </style>

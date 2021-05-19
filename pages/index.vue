@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen">
 
-    <div class="header-background h-48 flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
+    <div class="header-background h-48 ipad-header flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
       <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
 
@@ -19,7 +19,7 @@
     <div id="activities" class="mx-5">
       <p class="mb-2">Activities</p>
       <ActivityCard class="mb-10" img="yoga" title="Yoga"/>
-      <ActivityCard class="mb-10" img="meditation" title="Meditation"/>
+      <ActivityCard class="mb-20" img="meditation" title="Meditation"/>
     </div>
 
     <!--    <Button title="LOGOUT" @click.native="logout" />-->
@@ -105,5 +105,11 @@ export default {
 /* Hide scrollbar for Chrome, Safari and Opera */
 .scroll-right::-webkit-scrollbar {
   display: none;
+}
+
+@media only screen and (min-width: 768px) {
+  .ipad-header {
+    height: 20em;
+  }
 }
 </style>
