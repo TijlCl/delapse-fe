@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-gray-200 login-bg" :style="pageBackgroundImage">
-    <div class="pt-20 mb-24 mx-auto flex items-center justify-center">
+    <div class="pt-20 mb-16 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
       <p class=" ml-1 self-end mb-2 text-white text-xs">Retake life.</p>
     </div>
@@ -26,7 +26,7 @@
       <Button title="Forgot password?" color="#9c9c9c" small/>
     </div>
     <NuxtLink  to="/register">
-      <div class="w-10/12 py-4 px-6 mt-10 mx-auto flex items-center justify-center">
+      <div class="w-10/12 py-4 px-6 mt-4 mx-auto flex items-center justify-center">
           <Button title="Don't have an account yet? <b>Sing up here</b>" color="#9c9c9c" small/>
       </div>
     </NuxtLink>
