@@ -1,6 +1,6 @@
 <template>
-  <div class="min-h-screen bg-gray-200 register-bg" :style="pageBackgroundImage">
-    <div class="pt-20 mb-24 mx-auto flex items-center justify-center">
+  <div class="min-h-screen bg-gray-200 register-bg pt-10 sm:pt-20 pb-1" :style="pageBackgroundImage">
+    <div class="mb-5 sm:mb-10 mx-auto flex items-center justify-center">
       <h1 class="register-title">Delapse</h1>
     </div>
     <div
@@ -28,7 +28,7 @@
       </div>
     </div>
     <NuxtLink  to="/login">
-      <div class="w-10/12 py-4 px-6 mt-10 mx-auto flex items-center justify-center">
+      <div class="w-10/12 px-6 mt-10 mx-auto flex items-center justify-center">
         <Button title="Already have an account? <b>Login here</b>" color="#9c9c9c" small/>
       </div>
     </NuxtLink>

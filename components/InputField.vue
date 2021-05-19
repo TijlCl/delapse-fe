@@ -1,8 +1,8 @@
 <template>
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
     <div class="flex w-full items-center rounded-xl border-white border-2 bg-opacity-0" v-bind:class="errors.length > 0 ? 'border-red-600' : ''">
-      <div v-if="icon" class="flex justify-center w-15 p-3">
-        <span class="flex items-center text-xl text-white">
+      <div v-if="icon" class="flex justify-center p-3">
+        <span class="flex items-center text-base sm:text-xl text-white">
           <font-awesome-icon :icon="icon"/>
         </span>
       </div>
