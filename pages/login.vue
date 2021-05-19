@@ -2,21 +2,21 @@
   <div class="min-h-screen bg-gray-200 login-bg pt-10 sm:pt-20 pb-1" :style="pageBackgroundImage">
     <div class="mb-8 sm:mb-16 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
-      <p class=" ml-1 self-end mb-2 text-white text-xs">Retake life.</p>
+      <p class=" ml-1 self-end mb-1 sm:mb-2 text-white text-xs md:text-base">Retake life.</p>
     </div>
     <div
-      class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
+      class="w-3/4 max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
     >
-      <div class="py-4 px-6 mt-6">
+      <div class="py-4 px-6 md:py-32 md:px-24 mt-6">
         <label class="login-label">Login to your account</label>
         <form @submit.prevent="loginPassport">
-          <div class="mt-3">
+          <div class="mt-3 md:mt-10">
             <InputField  v-model="email" class="mb-4" placeholder="Email" icon="user"/>
           </div>
-          <div class="mt-4">
+          <div class="mt-4 md:mt-8">
             <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password"/>
           </div>
-          <div class="mt-8">
+          <div class="mt-8 md:mt-12">
             <Button title="Login" color="#1BA711"/>
           </div>
         </form>
