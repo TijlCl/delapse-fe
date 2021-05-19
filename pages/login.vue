@@ -7,7 +7,7 @@
     <div
       class="w-3/4 max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
     >
-      <div class="py-4 px-6 md:py-32 md:px-24 mt-6">
+      <div class="py-4 px-6 mt-6 md:py-32 md:px-24">
         <label class="login-label">Login to your account</label>
         <form @submit.prevent="loginPassport">
           <div class="mt-3 md:mt-10">
