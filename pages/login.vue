@@ -1,13 +1,13 @@
 <template>
-  <div class="min-h-screen bg-gray-200 login-bg" :style="pageBackgroundImage">
-    <div class="pt-20 mb-16 mx-auto flex items-center justify-center">
+  <div class="min-h-screen bg-gray-200 login-bg pt-10 sm:pt-20 pb-1" :style="pageBackgroundImage">
+    <div class="mb-8 sm:mb-16 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
       <p class=" ml-1 self-end mb-2 text-white text-xs">Retake life.</p>
     </div>
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
     >
-      <div class="py-4 px-6 mt-8">
+      <div class="py-4 px-6 mt-6">
         <label class="login-label">Login to your account</label>
         <form @submit.prevent="loginPassport">
           <div class="mt-3">
@@ -22,7 +22,7 @@
         </form>
       </div>
     </div>
-    <div class="w-1/2 py-4 px-6 mt-16 mx-auto flex items-center justify-center">
+    <div class="w-1/2 py-4 px-6 mt-8 sm:mt-12 mx-auto flex items-center justify-center">
       <Button title="Forgot password?" color="#9c9c9c" small/>
     </div>
     <NuxtLink  to="/register">
