@@ -2,7 +2,7 @@
   <div class="min-h-screen add-event-bg" :style="pageBackground">
 
     <TopNav pageTitle="Edit event">
-      <font-awesome-icon class="icon-color" @click="showDeleteModal" icon="trash"/>
+      <font-awesome-icon class="icon-color md:text-2xl" @click="showDeleteModal" icon="trash"/>
     </TopNav>
 
     <WarningModal title="Delete event" v-show="deleteModalVisible" @close="closeDeleteModal">
@@ -12,25 +12,25 @@
     </WarningModal>
 
     <div
-      class="w-3/4 max-w-sm mx-auto flex items-center justify-center"
+      class="w-3/4 max-w-sm mx-auto flex items-center justify-center md:inline md:max-w-full"
     >
-      <div class="py-4 px-6 mt-8">
+      <div class="py-4 px-6 mt-8 md:py-32 md:px-24">
         <form @submit.prevent="updateEvent">
-          <div class="mt-3">
+          <div class="mt-3 md:mt-8">
             <InputField v-model="title" class="mb-4" placeholder="Title" icon="user" :api-errors="errors.title"/>
           </div>
-          <div class="mt-6">
+          <div class="mt-6 md:mt-12">
             <DatePickerInputField v-model="date" class="mb-4" placeholder="Date" icon="calendar-alt" :api-errors="errors.date" />
           </div>
-          <div class="mt-6">
+          <div class="mt-6 md:mt-12">
             <InputField v-model="description" class="mb-4" placeholder="Description" icon="book-open" :api-errors="errors.description"/>
           </div>
 
-          <div class="mt-6">
+          <div class="mt-6 md:mt-12">
             <SelectField v-model="tag" :options="['Private', 'Work', 'School']" class="mb-4" :api-errors="errors.tag"/>
           </div>
 
-          <div class="mt-12">
+          <div class="mt-12 md:mt-32">
             <Button title="Save" color="#1BA711"/>
           </div>
         </form>

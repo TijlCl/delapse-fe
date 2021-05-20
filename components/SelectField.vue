@@ -1,12 +1,12 @@
 <template>
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
     <div class="w-full">
-      <div class="relative inline-flex">
+      <div class="relative inline-flex md:w-40">
             <span class="absolute top-0 bottom-0 right-0 m-2 mr-3 text-xl">
               <font-awesome-icon icon="chevron-down"/>
             </span>
         <select v-model="val"
-                class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white hover:border-gray-400 focus:outline-none appearance-none">
+                class="border border-gray-300 rounded-full text-gray-600 h-10 pl-5 pr-10 bg-white focus:outline-none appearance-none md:w-full">
           <option v-for="(option, i) in options" :key="i">{{ option }}</option>
         </select>
       </div>

@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full h-16 flex flex-wrap content-center grid grid-cols-3 place-content-center container" v-bind:class="line ? 'bottom-border' : ''">
-    <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-xl" icon="arrow-left" v-bind:style="{ color: arrowColor }"/>
-    <h2 class="page-title justify-self-center" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</h2>
+  <div class="w-full h-16 md:h-20 flex flex-wrap content-center grid grid-cols-3 place-content-center container md:px-4" v-bind:class="line ? 'bottom-border' : ''">
+    <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-xl md:text-3xl" icon="arrow-left" v-bind:style="{ color: arrowColor }"/>
+    <p class="page-title justify-self-center text-xl md:text-2xl" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</p>
     <div class="justify-self-end self-center mr-5">
       <slot></slot>
     </div>
@@ -47,7 +47,6 @@ export default {
 }
 
 .page-title{
-  font-size: 16pt;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
