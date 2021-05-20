@@ -2,19 +2,19 @@
   <div class="min-h-screen add-event-bg  bg-no-repeat min-h-screen background-image" :style="pageBackgroundImage">
     <TopNav pageTitle="Settings" arrowColour="white" :line="false"></TopNav>
 
-    <div class="max-w-sm mx-auto flex items-center justify-center px-4">
-
-
-      <div class="py-4 px-0 w-full mt-8">
+    <div
+      class="w-3/4 max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
+    >
+      <div class="py-4 px-6 mt-6 md:py-32 md:px-24">
 
         <form @submit.prevent="updateSettings">
 
           <NuxtLink to="/edit-profile">
             <div class="px-3 py-2 flex flex-wrap content-end">
-              <span class="flex items-center text-white mr-3">
+              <span class="flex items-center text-white mr-3 md:text-2xl">
                 <font-awesome-icon icon="user"/>
               </span>
-              <h2 class="text-white">Edit Profile</h2>
+              <h2 class="text-white md:text-2xl">Edit Profile</h2>
               <span class="flex items-center text-white ml-auto">
                 <font-awesome-icon icon="arrow-right"/>
               </span>
@@ -23,10 +23,10 @@
           </NuxtLink>
 
           <div class="px-3 py-2 flex flex-wrap content-end">
-              <span class="flex items-center text-white mr-3">
+              <span class="flex items-center text-white mr-3 md:text-2xl">
                 <font-awesome-icon icon="cog"/>
               </span>
-            <h2 class="text-white">Account settings</h2>
+            <h2 class="text-white md:text-2xl">Account settings</h2>
           </div>
           <hr class="mb-8">
 

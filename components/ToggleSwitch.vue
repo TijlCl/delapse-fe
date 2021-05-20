@@ -3,7 +3,7 @@
 
     <div class="flex justify-between items-center" @click="val = !val">
     <!-- Title -->
-      <h2 class="p-3 text-white"> {{title}} </h2>
+      <h2 class="p-3 text-white md:text-xl"> {{title}} </h2>
 
       <div class="p-3">
 

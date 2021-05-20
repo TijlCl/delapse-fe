@@ -1,14 +1,14 @@
 <template>
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
-    <p class="text-gray-400"> {{title}} </p>
+    <p class="text-gray-400 md:text-xl"> {{title}} </p>
     <div class="flex w-full items-center bg-opacity-0" v-bind:class="errors.length > 0 ? 'border-red-600' : ''">
       <label>
-        <p v-if="disabled" class="w-9/12 self-center text-xl outline-none bg-transparent placeholder-white placeholder-opacity-75 text-gray-600"> {{value}} </p>
+        <p v-if="disabled" class="w-9/12 self-center text-xl outline-none bg-transparent placeholder-white placeholder-opacity-75 text-gray-600 md:text-2xl"> {{value}} </p>
         <input
           v-else
           v-model="val"
           :type="inputType"
-          class="w-9/12 self-center text-xl outline-none bg-transparent placeholder-white placeholder-opacity-75 text-white"
+          class="w-9/12 self-center text-xl outline-none bg-transparent placeholder-white placeholder-opacity-75 text-white md:text-2xl"
           :placeholder="placeholder"
         />
       </label>

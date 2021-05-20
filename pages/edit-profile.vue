@@ -4,7 +4,7 @@
 
     <div class="w-full flex flex-col items-center content-center justify-center mt-16">
       <label for="file-input" class="flex justify-center imagePreview">
-        <img v-if="userImage" :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image" alt="Profile image"/>
+        <img v-if="userImage" :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image md:w-32 md:h-32" alt="Profile image"/>
         <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border">
           <font-awesome-icon class="rounded-full text-4xl mx-auto" icon="user"/>
         </div>
@@ -13,10 +13,10 @@
       <input id="file-input" ref="image" type="file" @change="previewImage" class="hidden" accept="image/*">
     </div>
 
-    <div class="max-w-sm mx-auto flex items-center justify-center px-4">
-
-
-        <div class="py-4 px-0 w-full mt-8">
+    <div
+      class="w-3/4 max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
+    >
+      <div class="py-4 px-6 mt-6 md:py-24 md:px-24">
 
           <form @submit.prevent="updateProfile">
 
@@ -24,15 +24,15 @@
               <SettingInputField v-model="userName" title="User name" class="mb-4" placeholder="Name" t :api-errors="errors.name"/>
             </div>
 
-            <div class="mt-6">
+            <div class="mt-6 md:mt-10">
               <SettingInputField disabled v-model="email" title="Email" class="mb-4" placeholder="Email" />
             </div>
 
-            <div class="mt-6">
+            <div class="mt-6 md:mt-10">
               <SettingInputField  v-model="phoneNumber" title="Phone number" class="mb-4" placeholder="Phone number" :api-errors="errors.phoneNumber" />
             </div>
 
-          <div class="mt-10">
+          <div class="mt-10 md:mt-32">
 
             <Button title="Save" class="mb-5"></Button>
 
