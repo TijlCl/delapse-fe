@@ -71,8 +71,6 @@ export default {
       this.$axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/Rehab.json?types=poi&proximity=${this.position.join()}&limit=20&access_token=${this.$config.mapboxAccessToken}`).then(res => {
         res.data.features.forEach(marker => {
 
-          console.log(marker)
-
           // make a marker for each feature and add to the map
           new mapboxgl.Marker()
             .setLngLat(marker.geometry.coordinates)

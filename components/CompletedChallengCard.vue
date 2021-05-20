@@ -3,7 +3,7 @@
     <div class="md:flex relative h-full">
       <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="400" alt="event background image" />
       <div class="text-block">
-        <p class="text-xs text-white text-center">{{ title }}</p>
+        <p class="text-xs md:text-base text-white text-center">{{ title }}</p>
       </div>
     </div>
   </div>
@@ -31,7 +31,7 @@ export default {
 <style scoped>
 
 .event-card{
-  width: 180px;
+  width: 9em;
 }
 
 .text-block {
@@ -44,8 +44,14 @@ export default {
   width: 100%;
 }
 
-.text-2s{
-  font-size: 0.60rem;
-  line-height: 1rem;
+@media only screen and (min-width: 768px) {
+  .event-card {
+    width: 12em;
+    height: 7rem;
+  }
+
+  .text-block {
+    padding: 3px 30px 30px 30px;
+  }
 }
 </style>
