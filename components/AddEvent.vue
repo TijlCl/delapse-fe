@@ -41,4 +41,12 @@ export default {
     width: 7rem;
   }
 }
+
+@media only screen and (min-width: 1024px) {
+
+  .add-event-card {
+    width: 8em;
+    height: 8rem;
+  }
+}
 </style>

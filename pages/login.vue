@@ -7,22 +7,22 @@
     <div
       class="w-3/4 max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
     >
-      <div class="py-4 px-6 mt-6 md:py-32 md:px-24">
+      <div class="py-4 px-6 mt-6 md:py-32 md:px-24 lg:py-56">
         <label class="login-label">Login to your account</label>
         <form @submit.prevent="loginPassport">
           <div class="mt-3 md:mt-10">
             <InputField  v-model="email" class="mb-4" placeholder="Email" icon="user"/>
           </div>
-          <div class="mt-4 md:mt-8">
+          <div class="mt-4 md:mt-8 lg:mt-12">
             <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password"/>
           </div>
-          <div class="mt-8 md:mt-12">
+          <div class="mt-8 md:mt-12 lg:mt-20">
             <Button title="Login" color="#1BA711"/>
           </div>
         </form>
       </div>
     </div>
-    <div class="w-1/2 py-4 px-6 mt-8 sm:mt-12 mx-auto flex items-center justify-center">
+    <div class="w-1/2 py-4 px-6 mt-8 sm:mt-12 mx-auto flex items-center justify-center lg:mt-24">
       <Button title="Forgot password?" color="#9c9c9c" small/>
     </div>
     <NuxtLink  to="/register">

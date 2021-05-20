@@ -2,13 +2,13 @@
   <div>
     <div v-show="!searching">
       <TopNav pageTitle="Chat" dark>
-        <font-awesome-icon icon="search" class="search md:text-2xl" @click="startSearch"/>
+        <font-awesome-icon icon="search" class="search md:text-2xl md:text-3xl" @click="startSearch"/>
       </TopNav>
       <nav class="flex flex-row mb-4">
-        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none font-medium md:text-xl" @click="focus('chats')" v-bind:class="display === 'chats' ? 'border-b-2 border-gray-600' : ''">
+        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none font-medium md:text-xl lg:text-2xl" @click="focus('chats')" v-bind:class="display === 'chats' ? 'border-b-2 border-gray-600' : ''">
           Chats
         </button>
-        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none md:text-xl" @click="focus('chat_groups')" v-bind:class="display === 'chat_groups' ? 'border-b-2 border-gray-600' : ''">
+        <button class="w-1/2 text-gray-700 py-4 px-6 block focus:outline-none md:text-xl lg:text-2xl" @click="focus('chat_groups')" v-bind:class="display === 'chat_groups' ? 'border-b-2 border-gray-600' : ''">
           Chat groups
         </button>
       </nav>

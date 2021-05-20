@@ -3,7 +3,7 @@
     <div class="md:flex relative h-full">
       <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="400" alt="event background image" />
       <div class="text-block">
-        <p class="text-xs md:text-base text-white text-center">{{ title }}</p>
+        <p class="text-xs md:text-base text-white text-center lg:text-xl">{{ title }}</p>
       </div>
     </div>
   </div>
@@ -52,6 +52,29 @@ export default {
 
   .text-block {
     padding: 3px 30px 30px 30px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .event-card {
+    width: 12em;
+    height: 7rem;
+  }
+
+  .text-block {
+    padding: 3px 30px 30px 30px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .event-card {
+    width: 15em;
+    height: 8rem;
+  }
+
+  .text-block {
+    padding: 3px 35px 35px 35px;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen pb-16">
-    <div class="header-background h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
+    <div class="header-background h-64 flex flex-wrap justify-center shadow ipad-header" :style="headerBackground">
       <TopNav :line="false" arrowColor="white">
         <NuxtLink  to="/settings">
           <font-awesome-icon class="text-white md:text-2xl" icon="cog"/>
@@ -9,7 +9,7 @@
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
         <div class="w-1/2 flex flex-col items-center content-center justify-center">
-          <h1 class="name m-2">{{ userName[0].toUpperCase() + userName.substring(1) }}</h1>
+          <h1 class="name m-2 lg:mb-5">{{ userName[0].toUpperCase() + userName.substring(1) }}</h1>
           <h2 class="location">Brussels, Belgium</h2>
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
@@ -20,8 +20,8 @@
         <div class="w-1/4"></div>
         <div class="w-1/2 flex flex-col items-center content-center justify-center">
           <label for="file-input" class="flex justify-center imagePreview">
-            <nuxt-img v-if="userImage" width="200"  :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image" alt="Profile image"/>
-            <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border">
+            <nuxt-img v-if="userImage" width="200"  :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image md:w-24 md:h-24 lg:w-32 md:h-32" alt="Profile image"/>
+            <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border  md:w-24 md:h-24">
               <font-awesome-icon class="rounded-full text-4xl mx-auto" icon="user"/>
             </div>
           </label>
@@ -39,18 +39,18 @@
       <span v-for="(apiError, i) in errors.image" :key="i" class="input-errors pl-2">{{ apiError }}</span>
     </div>
 
-    <div id="events" class="scroll-right ml-5 mt-16 mb-6">
+    <div id="events" class="scroll-right ml-5 mt-16 mb-6 md:mt-24">
       <Achievement v-for="(achievement, i) in achievements" :key="i" :img="achievement.image" :title="achievement.title" />
     </div>
 
     <div id="challenges" class="scroll-right ml-5">
-      <p class="mb-1 subheader">Completed weekly challenges</p>
+      <p class="mb-1 subheader md:text-xl lg:text-2xl">Completed weekly challenges</p>
       <div class="mt-8">
         <CompletedChallengCard v-for="(achievement, i) in achievements" :key="i" img="cake" title="Bake a cake" />
       </div>
     </div>
 
-    <div class="mt-6 px-16">
+    <div class="mt-6 px-16 md:mt-20">
       <Button title="I need help!" color="#1BA711"/>
     </div>
 
@@ -158,5 +158,25 @@ export default {
 
 .no-border{
   border-width: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .ipad-header {
+    height: 20em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ipad-header {
+    height: 30em;
+  }
+
+  .name{
+    font-size: 35pt;
+  }
+
+  .location{
+    font-size: 16pt;
+  }
 }
 </style>

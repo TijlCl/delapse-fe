@@ -2,7 +2,7 @@
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
     <div class="flex w-full items-center rounded-xl border-white border-2 bg-opacity-0" v-bind:class="errors.length > 0 ? 'border-red-600' : ''">
       <div v-if="icon" class="flex justify-center p-3">
-        <span class="flex items-center text-base sm:text-xl md:text-2xl text-white">
+        <span class="flex items-center text-base sm:text-xl md:text-2xl text-white lg:text-3xl">
           <font-awesome-icon :icon="icon"/>
         </span>
       </div>
@@ -10,7 +10,7 @@
           <input
             v-model="val"
             :type="inputType"
-            class="w-9/12 self-center text-xl outline-none text-white bg-transparent placeholder-white placeholder-opacity-75"
+            class="w-9/12 self-center text-xl outline-none text-white bg-transparent placeholder-white placeholder-opacity-75 lg:text-2xl"
             v-bind:class="icon ? '' : 'px-3'"
             :placeholder="placeholder"
           />

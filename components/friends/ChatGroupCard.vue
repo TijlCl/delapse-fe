@@ -1,9 +1,9 @@
 <template>
   <div class="bg-white w-full flex items-center px-5">
-    <span class="mr-3 rounded-full h-10 w-10 md:h-12 md:w-12 flex items-center justify-center bg-gray-400">
+    <span class="mr-3 rounded-full h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 flex items-center justify-center bg-gray-400">
       <font-awesome-icon icon="user" class="text-white"/>
     </span>
-    <div class="flex-grow p-3 read md:text-xl">
+    <div class="flex-grow p-3 read md:text-xl lg:text-2xl">
       <div>
         {{ names }}
       </div>

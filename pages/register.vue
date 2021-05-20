@@ -6,22 +6,22 @@
     <div
       class="w-3/4 max-w-sm mx-auto flex items-center justify-center md:inline md:max-w-full"
     >
-      <div class="py-4 px-6 mt-4 md:py-24 md:px-24">
+      <div class="py-4 px-6 mt-4 md:py-24 md:px-24 lg:py-48">
         <label class="register-label">Create your account</label>
         <form @submit.prevent="register">
-          <div class="mt-4 md:mt-10">
+          <div class="mt-4 md:mt-10 lg:mt-12">
             <InputField  v-model="name" class="mb-4" placeholder="Username" icon="user"/>
           </div>
-          <div class="mt-4 md:mt-10">
+          <div class="mt-4 md:mt-10 lg:mt-12">
             <InputField  v-model="email" class="mb-4" placeholder="Email" icon="envelope-open"/>
           </div>
-          <div class="mt-4 md:mt-10">
+          <div class="mt-4 md:mt-10 lg:mt-12">
             <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password"/>
           </div>
-          <div class="mt-4 md:mt-10">
+          <div class="mt-4 md:mt-10 lg:mt-12">
             <InputField  v-model="passwordConfirmation" class="mb-4" placeholder="Confirm password" icon="lock" input-type="password"/>
           </div>
-          <div class="mt-8 md:mt-10">
+          <div class="mt-8 md:mt-10 lg:mt-20">
             <Button title="Register" color="#1BA711"/>
           </div>
         </form>

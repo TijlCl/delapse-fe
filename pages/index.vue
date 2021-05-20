@@ -1,23 +1,23 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen lg:pb-12">
 
     <div class="header-background h-48 ipad-header flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
       <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
 
     <div id="events" class="scroll-right ml-5 mb-10">
-      <p class="mb-2">Events</p>
+      <p class="mb-2 md:text-xl lg:text-2xl">Events</p>
       <AddEvent img="mountains"/>
       <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
 
     <div id="weekly-challenge-wrapper" class="scroll-right ml-5 mb-10">
-      <p class="mb-2">Weekly challenge</p>
+      <p class="mb-2 md:text-xl lg:text-2xl">Weekly challenge</p>
       <ChallengeCard v-for="(challenge, i) in challenges" :key="i" v-if="!challenge.completed" class="mb-4" :img="challenge.challenge.image" :title="challenge.challenge.title" :caption="challenge.challenge.description" @click.native="challengeDetail(challenge.id)"/>
     </div>
 
     <div id="activities" class="mx-5">
-      <p class="mb-2">Activities</p>
+      <p class="mb-2 md:text-xl lg:text-2xl">Activities</p>
       <ActivityCard class="mb-10" img="yoga" title="Yoga"/>
       <ActivityCard class="mb-20" img="meditation" title="Meditation"/>
     </div>
@@ -110,6 +110,12 @@ export default {
 @media only screen and (min-width: 768px) {
   .ipad-header {
     height: 20em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ipad-header {
+    height: 28em;
   }
 }
 </style>

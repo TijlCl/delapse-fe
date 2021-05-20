@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen">
+  <div class="min-h-screen pb-10">
     <TopNav v-if="challenge" dark :pageTitle="challenge.challenge.title" :line="false"></TopNav>
     <TopNav v-else dark pageTitle="'Challenge'"></TopNav>
 
@@ -11,7 +11,7 @@
           <TextareaField v-model="completeChallengeDescription" placeholder="Description" :api-errors="errors.description"/>
         </div>
 
-        <div class="image-upload mt-12 mb-6">
+        <div class="image-upload mt-12 mb-6 md:mb-32">
           <label for="file-input" class="flex justify-center imagePreview">
             <img v-if="imageUrl" :src="imageUrl" class="w-full object-contain"/>
             <font-awesome-icon v-else class="text-6xl text-gray-600 my-auto" icon="upload"/>
@@ -98,5 +98,12 @@ export default {
 .input-errors{
   font-weight: bold;
   color: #ff0000;
+}
+
+@media only screen and (min-width: 768px) {
+  .imagePreview{
+    height: 280px;
+    position: relative;
+  }
 }
 </style>

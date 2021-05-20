@@ -1,5 +1,5 @@
 <template>
-  <button class="text-white md:text-xl" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button">
+  <button class="text-white md:text-xl lg:text-2xl" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button">
     <span v-html="title"></span>
   </button>
 </template>
