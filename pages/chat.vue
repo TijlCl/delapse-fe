@@ -1,7 +1,7 @@
 <template>
   <div>
     <TopNav :pageTitle="title" dark>
-      <font-awesome-icon icon="user-plus" class="search" @click="creatingGroup = true"/>
+      <font-awesome-icon icon="user-plus" class="search md:text-2xl" @click="creatingGroup = true"/>
     </TopNav>
 
     <div v-if="!creatingGroup">
