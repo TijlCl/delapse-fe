@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-16 md:h-20 flex flex-wrap content-center grid grid-cols-3 place-content-center container md:px-4 lg:h-24" v-bind:class="line ? 'bottom-border' : ''">
+  <div class="w-full h-16 md:h-20 flex flex-wrap content-center grid grid-cols-3 place-content-center grid-container md:px-4 lg:h-24" v-bind:class="line ? 'bottom-border' : ''">
     <font-awesome-icon @click="$router.back()" class="self-center ml-5 text-xl md:text-3xl lg:text-4xl" icon="arrow-left" v-bind:style="{ color: arrowColor }"/>
     <p class="page-title justify-self-center text-xl md:text-2xl lg:text-4xl" v-bind:class="dark ? '' : 'text-white'">{{ pageTitle }}</p>
     <div class="justify-self-end self-center mr-5">
@@ -42,7 +42,7 @@ export default {
 
 <style scoped>
 
-.container {
+.grid-container {
   grid-template-columns: 15% 70% 15% !important;
 }
 

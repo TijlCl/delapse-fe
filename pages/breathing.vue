@@ -1,5 +1,5 @@
 <template>
-  <div class="container min-h-screen" :style="pageBackgroundImage">
+  <div class="breathing-container min-h-screen" :style="pageBackgroundImage">
     <TopNav pageTitle="Take a breath" :line="false" arrowColor="white"/>
     <button v-if="selecting" @click="start" class="text-white play">
       <font-awesome-icon icon="play"/>
@@ -138,7 +138,7 @@ export default {
   height: auto !important;
 }
 
-.container {
+.breathing-container {
   background-repeat: no-repeat;
   background-size: 110% 140%;
 }
