@@ -88,7 +88,7 @@ export default {
 
 <style scoped>
 .check-in {
-  height: 15vh;ª
+  height: 15vh;
   width: 90%;
   padding: 3vw;
   color: white;
