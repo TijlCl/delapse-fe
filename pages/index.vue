@@ -2,11 +2,19 @@
   <div class="min-h-screen lg:pb-12">
 
     <div class="header-background h-48 ipad-header flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
+      <NuxtLink  to="/profile">
+        <font-awesome-icon icon="user" class="profile-link" />
+      </NuxtLink>
       <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
 
-    <div id="events" class="scroll-right ml-5 mb-10">
-      <p class="mb-2 md:text-xl lg:text-2xl">Events</p>
+    <NuxtLink to="/check-in/create">
+      <HomeCheckIn />
+    </NuxtLink>
+
+
+    <div id="events" class="scroll-right ml-5 mb-10 mt-10">
+      <p class="mb-2">Events</p>
       <AddEvent img="mountains"/>
       <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
@@ -17,9 +25,10 @@
     </div>
 
     <div id="activities" class="mx-5">
-      <p class="mb-2 md:text-xl lg:text-2xl">Activities</p>
-      <ActivityCard class="mb-10" img="yoga" title="Yoga"/>
-      <ActivityCard class="mb-20" img="meditation" title="Meditation"/>
+      <p class="mb-2">Activities</p>
+      <NuxtLink  to="/breathing">
+        <ActivityCard class="mb-10" img="breathing" title="Breathing"/>
+      </NuxtLink>
     </div>
 
     <!--    <Button title="LOGOUT" @click.native="logout" />-->
@@ -28,8 +37,12 @@
 </template>
 
 <script>
+import HomeCheckIn from "~/components/checkIn/HomeCheckIn";
 
 export default {
+  components: {
+    HomeCheckIn
+  },
   data() {
     return {
       userName : this.$auth.user.name
@@ -47,11 +60,12 @@ export default {
       return {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
       }
-    }
+    },
   },
   async fetch ({ store }) {
     await store.dispatch('events/fetchAll');
     await store.dispatch('challenges/fetchActive');
+    await store.dispatch('checkIns/fetchThisWeeks');
   },
   methods: {
     logout() {
@@ -75,6 +89,13 @@ export default {
 
 <style scoped>
 
+.profile-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: white;
+  margin: 20px;
+}
 
 .header-background{
   -webkit-background-size: cover;

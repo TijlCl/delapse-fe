@@ -12,6 +12,8 @@ import chatGroups from "./chat-groups"
 import chatGroup from "./chat-group"
 import userSettings from "./user-settings"
 import userProfile from "./user-profile"
+import checkIn from "./check-in"
+import checkIns from "./check-ins"
 
 export default {
   chat,
@@ -27,5 +29,7 @@ export default {
   chatGroups,
   chatGroup,
   userSettings,
-  userProfile
+  userProfile,
+  checkIn,
+  checkIns,
 };

@@ -1,7 +1,9 @@
 <template>
   <div class="breathing-container min-h-screen" :style="pageBackgroundImage">
-    <TopNav pageTitle="Take a breath" :line="false" arrowColor="white"/>
-    <button v-if="selecting" @click="start" class="text-white play">
+    <TopNav v-if="selecting" pageTitle="Take a breath" :line="false" arrowColor="white"/>
+    <TopNavBreathing v-else pageTitle="Take a breath" :line="false" arrowColor="white" @back="stop"/>
+    <p v-if="!selecting" class="text-white timer">{{ timer }}</p>
+    <button v-if="selecting" @click="select" class="text-white play">
       <font-awesome-icon icon="play"/>
     </button>
     <carousel v-if="selecting" :perPage="1" :mouseDrag="false" :minSwipeDistance="20" @page-change="choose">
@@ -58,7 +60,8 @@
         <relax-breathing v-if="exercise === 'relax'" :paused="paused" />
       </div>
       <div class="w-20 pause-btn">
-        <Button :title="paused ? 'Play' : 'Pause'" color="#000000" @click.native="paused = !paused"/>
+        <Button v-if="started" :title="paused ? 'Play' : 'Pause'" color="#000000" @click.native="pause"/>
+        <Button v-else title="Start" color="#000000" @click.native="start"/>
       </div>
     </div>
   </div>
@@ -71,6 +74,7 @@ import BellyBreathing from "~/components/breathing/BellyBreathing";
 import BoxBreathing from "~/components/breathing/BoxBreathing";
 import EnergizeBreathing from "~/components/breathing/EnergizeBreathing";
 import RelaxBreathing from "~/components/breathing/RelaxBreathing";
+import TopNavBreathing from "~/components/breathing/TopNavBreathing";
 
 export default {
   middleware: 'auth',
@@ -80,7 +84,8 @@ export default {
     BellyBreathing,
     BoxBreathing,
     EnergizeBreathing,
-    RelaxBreathing
+    RelaxBreathing,
+    TopNavBreathing
   },
   data() {
     return {
@@ -88,7 +93,16 @@ export default {
       selecting: true,
       selectingTime: false,
       time: 2,
-      exercise: 'extended'
+      exercise: 'extended',
+      countDown : 120,
+      started: false
+    }
+  },
+  watch: {
+    started(newVal) {
+      if (newVal) {
+        this.countDownTimer();
+      }
     }
   },
   computed: {
@@ -97,19 +111,38 @@ export default {
       return {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('${imgUrl}')`
       }
+    },
+    timer () {
+      return new Date(this.countDown * 1000).toISOString().substr(14, 5)
     }
   },
   methods: {
     setTime() {
       if(this.time === 1) {
         this.time = 2;
+        this.countDown = 120;
       } else if (this.time === 2) {
         this.time = 3;
+        this.countDown = 180;
       } else if (this.time === 3) {
         this.time = 5;
+        this.countDown = 300;
       } else if (this.time === 5) {
         this.time = 1;
+        this.countDown = 60;
       }
+    },
+    countDownTimer() {
+      if(this.countDown > 0 && this.started && !this.paused) {
+        setTimeout(() => {
+          this.countDown -= 1
+          this.countDownTimer()
+        }, 1000)
+      }
+    },
+    start() {
+      this.started = true;
+      this.paused = false;
     },
     choose(val) {
       if(val === 0) {
@@ -126,8 +159,19 @@ export default {
         this.exercise = 'relax';
       }
     },
-    start() {
+    select() {
       this.selecting = false;
+    },
+    stop() {
+      this.selecting = true;
+      this.paused = true;
+      this.started = false;
+      this.countDown = 120;
+      this.time = 2;
+    },
+    pause() {
+      this.paused = !this.paused;
+      this.countDownTimer();
     }
   }
 }
@@ -192,8 +236,14 @@ export default {
   position: relative;
 }
 
+.timer {
+  font-size: 10vw;
+  text-align: center;
+  margin-top: 10vh;
+}
+
 .animation-container {
-  padding-top: 45%;
+  padding-top: 10%;
 }
 
 .pause-btn {

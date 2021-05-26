@@ -57,6 +57,7 @@ export default {
   border-width: 10px;
   border-color: rgba(255, 255, 255, 0.2);
   animation: test 9s linear infinite;
+  animation-play-state: paused;
 }
 .item {
   grid-area:1/1;
@@ -65,6 +66,7 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   animation: spin 9s linear infinite;
   transform:rotate(-0.25turn) translate(100px) rotate(-0.25turn);
+  animation-play-state: paused;
 }
 
 .point-2 {
@@ -108,10 +110,12 @@ export default {
   opacity: 0;
   overflow: hidden;
   animation: bin 9s linear infinite 0s;
+  animation-play-state: paused;
 }
 .rw-words-1 span:nth-child(2) {
   animation: bout 9s linear infinite 0s;
   animation-delay: 3s;
+  animation-play-state: paused;
 }
 
 @keyframes bin {

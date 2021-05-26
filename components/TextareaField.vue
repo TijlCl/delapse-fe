@@ -1,6 +1,6 @@
 <template>
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
-    <div class="w-full items-center rounded-xl border-white border-2 bg-opacity-0" v-bind:class="errors.length > 0 ? 'border-red-600' : ''">
+    <div class="w-full items-center rounded-xl bg-opacity-0" v-bind:class="errors.length > 0 ? 'border-red-600' : ''">
       <label>
         <textarea
           v-model="val"

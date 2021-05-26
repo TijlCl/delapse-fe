@@ -1,6 +1,18 @@
+import path from 'path'
+import { createIPX, createIPXMiddleware } from 'ipx'
+const ipx = createIPX({
+  dir: path.join(__dirname, 'static/img'),
+  // https://image.nuxtjs.org/api/options#domains
+  domains: [],
+  // Any options you need to pass to sharp
+  sharp: {}
+})
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
+
+  target: 'static',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -66,8 +78,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome',
-    '@nuxt/image'
+    '@nuxtjs/fontawesome'
   ],
 
   fontawesome: {
@@ -94,7 +105,9 @@ export default {
         'faExclamationTriangle',
         'faCog',
         'faPhoneAlt',
-        'faPlay'
+        'faPlay',
+        'faTimes',
+        'faSave'
       ],
     }
   },
@@ -107,6 +120,7 @@ export default {
     '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
     '@nuxtjs/toast',
+    '@nuxt/image'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -206,6 +220,10 @@ export default {
 
   // allow images from api
   image: {
-    domains: [process.env.API_URL]
+    domains: [process.env.API_URL],
+  },
+
+  generate: {
+    ignore: false
   }
 }

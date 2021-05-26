@@ -63,6 +63,7 @@ export default {
   border-width: 10px;
   border-color: rgba(255, 255, 255, 0.2);
   animation: test 9s linear infinite;
+  animation-play-state: paused;
 }
 .item {
   grid-area:1/1;
@@ -71,6 +72,7 @@ export default {
   background: rgba(255, 255, 255, 0.8);
   animation: spin 9s linear infinite;
   transform:rotate(-0.25turn) translate(100px) rotate(-0.25turn);
+  animation-play-state: paused;
 }
 
 .point-1 {
@@ -138,18 +140,22 @@ export default {
   opacity: 0;
   overflow: hidden;
   animation: bin 9s linear infinite 0s;
+  animation-play-state: paused;
 }
 .rw-words-1 span:nth-child(2) {
   animation: hold 9s linear infinite 0s;
   animation-delay: 2.25s;
+  animation-play-state: paused;
 }
 .rw-words-1 span:nth-child(3) {
   animation: bout 9s linear infinite 0s;
   animation-delay: 4.5s;
+  animation-play-state: paused;
 }
 .rw-words-1 span:nth-child(4) {
   animation: hold2 9s linear infinite 0s;
   animation-delay: 6.75s;
+  animation-play-state: paused;
 }
 
 @keyframes bin {

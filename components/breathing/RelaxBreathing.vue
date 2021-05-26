@@ -143,7 +143,7 @@ export default {
 
 @keyframes hold {
   0% { opacity: 0; }
-  2% { opacity: 1;}
+  2% { opacity: 1; }
   33% { opacity: 1; }
   36% { opacity: 0; }
 }
