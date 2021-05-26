@@ -2,7 +2,7 @@
   <ValidationProvider ref="input" :rules="rules" v-slot="{ errors }">
     <div class="w-full">
       <div class="relative inline-flex md:w-40">
-            <span class="absolute top-0 bottom-0 right-0 m-2 mr-3 text-xl">
+            <span class="absolute top-0 bottom-0 right-0 m-2 mr-3 text-base">
               <font-awesome-icon icon="chevron-down"/>
             </span>
         <select v-model="val"

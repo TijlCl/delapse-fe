@@ -29,6 +29,13 @@
     <div class="mt-6 px-16">
       <Button title="Add friend" color="#1BA711" @click.native="friendRequest"/>
     </div>
+
+    <div class="mt-6 px-16">
+      <NuxtLink  :to="`/users/report-user/${this.$route.params.id}`">
+        <Button title="Report user" color="#BB0303" @click.native="friendRequest"/>
+      </NuxtLink>
+    </div>
+
   </div>
 </template>
 

@@ -4,5 +4,6 @@ const initialModel = {
 
 export default () => ({
   initialState: initialModel,
-  user: {}
+  user: {},
+  reportUserErrors: {},
 })

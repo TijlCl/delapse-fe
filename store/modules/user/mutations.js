@@ -6,4 +6,8 @@ export default {
   setUser(state, user) {
     Vue.set(state, 'user', user)
   },
+
+  setReportUserErrors(state, errors) {
+    Vue.set(state, 'reportUserErrors', errors)
+  },
 }
