@@ -1,13 +1,3 @@
-import path from 'path'
-import { createIPX, createIPXMiddleware } from 'ipx'
-const ipx = createIPX({
-  dir: path.join(__dirname, 'static/img'),
-  // https://image.nuxtjs.org/api/options#domains
-  domains: [],
-  // Any options you need to pass to sharp
-  sharp: {}
-})
-
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -222,8 +212,4 @@ export default {
   image: {
     domains: [process.env.API_URL],
   },
-
-  generate: {
-    ignore: false
-  }
 }
