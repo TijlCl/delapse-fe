@@ -97,7 +97,9 @@ export default {
         'faPhoneAlt',
         'faPlay',
         'faTimes',
-        'faSave'
+        'faSave',
+        'faArrowDown',
+        'faSun',
       ],
     }
   },

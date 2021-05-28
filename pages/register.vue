@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200 register-bg pt-10 sm:pt-20 pb-1" :style="pageBackgroundImage">
+  <div class="min-h-screen bg-gray-200 register-bg pt-10 sm:pt-20 pb-10" :style="pageBackgroundImage">
     <div class="mb-5 sm:mb-10 mx-auto flex items-center justify-center">
       <h1 class="register-title">Delapse</h1>
     </div>
@@ -10,20 +10,57 @@
         <label class="register-label">Create your account</label>
         <form @submit.prevent="register">
           <div class="mt-4 md:mt-10 lg:mt-12">
-            <InputField  v-model="name" class="mb-4" placeholder="Username" icon="user"/>
+            <InputField  v-model="name" class="mb-4" placeholder="Username" icon="user" :api-errors="errors.name"/>
           </div>
           <div class="mt-4 md:mt-10 lg:mt-12">
-            <InputField  v-model="email" class="mb-4" placeholder="Email" icon="envelope-open"/>
+            <InputField  v-model="email" class="mb-4" placeholder="Email" icon="envelope-open" :api-errors="errors.email"/>
           </div>
           <div class="mt-4 md:mt-10 lg:mt-12">
-            <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password"/>
+            <InputField  v-model="password" class="mb-4" placeholder="Password" icon="key" input-type="password" :api-errors="errors.password"/>
           </div>
           <div class="mt-4 md:mt-10 lg:mt-12">
             <InputField  v-model="passwordConfirmation" class="mb-4" placeholder="Confirm password" icon="lock" input-type="password"/>
           </div>
-          <div class="mt-8 md:mt-10 lg:mt-20">
+          <div class="mt-4 md:mt-10 lg:mt-12">
+            <InputField  v-model="daysClean" class="mb-4" placeholder="Days clean" icon="sun" :api-errors="errors.days_clean"/>
+          </div>
+
+          <div class="px-3 py-2 flex flex-wrap content-end mt-10" @click="openSettings">
+              <span class="flex items-center text-white mr-3 md:text-2xl">
+                <font-awesome-icon icon="cog"/>
+              </span>
+            <h2 class="text-white md:text-2xl">Settings</h2>
+            <span class="flex items-center text-white ml-auto">
+                <font-awesome-icon icon="arrow-down"/>
+              </span>
+          </div>
+          <hr class="mb-5 sm:mb-6 md:mb-10">
+
+          <transition name="slide">
+            <div class="settings" v-if="showSettings">
+
+              <div class="mt-2 md:mt-10 lg:mt-12">
+                <ToggleSwitch v-model="enableLocation" title="Enable Location" :api-errors="errors.enable_location"/>
+              </div>
+
+              <div class="mt-2 md:mt-10 lg:mt-12">
+                <ToggleSwitch v-model="sponsor" title="Apply As Sponsor" :api-errors="errors.sponsor"/>
+              </div>
+
+              <div class="mt-2 md:mt-10 lg:mt-12">
+                <ToggleSwitch v-model="publicGallery" title="Public gallery" :api-errors="errors.public_gallery"/>
+              </div>
+
+              <div class="mt-2 md:mt-10 lg:mt-12">
+                <ToggleSwitch v-model="emergencyContact" title="Apply As Emergency Contact" :api-errors="errors.emergency_contact"/>
+              </div>
+            </div>
+          </transition>
+
+          <div class="mt-12 md:mt-16 lg:mt-20">
             <Button title="Register" color="#1BA711"/>
           </div>
+
         </form>
       </div>
     </div>
@@ -45,15 +82,21 @@ export default {
       email: '',
       password: '',
       passwordConfirmation: '',
-      error: null,
+      daysClean: '',
+      showSettings: false,
+      enableLocation: false,
+      sponsor: false,
+      publicGallery: false,
+      emergencyContact: false,
+      errors: {},
     }
   },
 
   computed: {
     pageBackgroundImage() {
-      const imgUrl = this.$img('/img/register-bg.jpg', { width: 400 })
+      const imgUrl = this.$img('/img/register-bg.jpg')
       return {
-        backgroundImage: `url('${imgUrl}')`
+        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
       }
     }
   },
@@ -67,22 +110,32 @@ export default {
           email: this.email,
           password: this.password,
           password_confirmation: this.passwordConfirmation,
+          days_clean: this.daysClean,
+          enable_location: this.enableLocation,
+          sponsor: this.sponsor,
+          public_gallery: this.publicGallery,
+          emergency_contact: this.emergencyContact,
         })
         .then(() => {
           this.$toast.success('Your account was created successfully!')
           this.$router.push('/login')
         })
-        .catch(function (e) {
-          this.error = e.response.data.errors ?? e.response.data
+        .catch((e) => {
+          this.errors = e.response.data.errors ?? e.response.data
         })
     },
+
+    openSettings() {
+      this.showSettings = !this.showSettings;
+    }
   },
 }
 </script>
 <style scoped>
 .register-bg{
   background-repeat: no-repeat;
-  background-size: 110% 100%
+  background-size: cover;
+  background-position: center;
 }
 .register-title {
   font-size: 5vh;
@@ -91,5 +144,14 @@ export default {
 .register-label {
   color: white;
   font-size: 2vh;
+}
+
+.settings{
+  transform-origin: top;
+  transition: transform .4s ease-in-out;
+}
+
+.slide-enter, .slide-leave-to{
+  transform: scaleY(0);
 }
 </style>
