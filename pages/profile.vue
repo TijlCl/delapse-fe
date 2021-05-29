@@ -44,9 +44,9 @@
     </div>
 
     <div id="challenges" class="scroll-right ml-5">
-      <p class="mb-1 subheader md:text-xl lg:text-2xl">Completed weekly challenges</p>
-      <div class="mt-8">
-        <CompletedChallengCard v-for="(achievement, i) in achievements" :key="i" img="cake" title="Bake a cake" />
+      <p class="mb-2 subheader md:text-xl lg:text-2xl">Completed weekly challenges</p>
+      <div>
+        <CompletedChallengCard v-for="(challenge, i) in challenges" :key="i" v-if="challenge.completed" class="mb-4" :img="challenge.challenge.image" :title="challenge.challenge.title" :caption="challenge.challenge.description"/>
       </div>
     </div>
 
@@ -71,6 +71,9 @@ export default {
     achievements() {
       return this.$store.getters['achievements/achievements'];
     },
+    challenges() {
+      return this.$store.getters['challenges/challenges'];
+    },
     headerBackground() {
       const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
       return {
@@ -83,6 +86,7 @@ export default {
   },
   async fetch ({ store }) {
     await store.dispatch('achievements/fetchAll');
+    await store.dispatch('challenges/fetchActive');
   },
   methods: {
     async uploadProfilePicture(event) {
@@ -142,7 +146,6 @@ export default {
 .subheader {
   font-weight: lighter;
   color: #707070;
-  position: fixed;
 }
 
 .profile-image{
