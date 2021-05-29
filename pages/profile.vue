@@ -30,7 +30,7 @@
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
           <h1 class="w-full text-white text-right pr-2">Days clean</h1>
-          <h2 class="w-full text-white text-right pr-2 font-bold text-xl">100</h2>
+          <h2 class="w-full text-white text-right pr-2 font-bold text-xl">{{ daysClean }}</h2>
         </div>
       </div>
     </div>
@@ -74,6 +74,9 @@ export default {
     challenges() {
       return this.$store.getters['challenges/challenges'];
     },
+    daysClean() {
+      return this.$store.getters['daysClean/daysClean'];
+    },
     headerBackground() {
       const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
       return {
@@ -87,6 +90,7 @@ export default {
   async fetch ({ store }) {
     await store.dispatch('achievements/fetchAll');
     await store.dispatch('challenges/fetchActive');
+    await store.dispatch('daysClean/fetchDaysClean');
   },
   methods: {
     async uploadProfilePicture(event) {
