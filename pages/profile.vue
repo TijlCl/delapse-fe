@@ -81,8 +81,8 @@ export default {
       return this.$store.getters['userSettings/errors'];
     },
   },
-  mounted() {
-    this.$store.dispatch('achievements/fetchAll');
+  async fetch ({ store }) {
+    await store.dispatch('achievements/fetchAll');
   },
   methods: {
     async uploadProfilePicture(event) {
