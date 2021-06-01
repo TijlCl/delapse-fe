@@ -11,6 +11,7 @@ export default {
     await this.$axios.post(`/api/v1/challenge-user/${id}/complete`, challenge, config)
       .then(response => {
         context.commit('setErrors', {});
+        context.commit('challenges/updateById', response.data.data, { root: true });
         context.commit('completedChallenges/addChallenge', response.data.data, { root: true });
       }).catch(errors => {
         context.commit('setErrors', errors.response.data.errors);

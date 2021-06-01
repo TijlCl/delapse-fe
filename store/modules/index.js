@@ -14,6 +14,7 @@ import userSettings from "./user-settings"
 import userProfile from "./user-profile"
 import checkIn from "./check-in"
 import checkIns from "./check-ins"
+import daysClean from "./days-clean"
 
 export default {
   chat,
@@ -32,4 +33,5 @@ export default {
   userProfile,
   checkIn,
   checkIns,
+  daysClean,
 };

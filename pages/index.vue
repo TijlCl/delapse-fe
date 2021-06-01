@@ -14,7 +14,7 @@
 
 
     <div id="events" class="scroll-right ml-5 mb-10 mt-10">
-      <p class="mb-2">Events</p>
+      <p class="">Events</p>
       <AddEvent img="mountains"/>
       <Event v-for="(event, i) in events" :key="i" :id="event.id" :img="event.image" :title="event.title" :date="event.date" :tag="event.tag" @click.native="editEvent(event.id)"/>
     </div>
