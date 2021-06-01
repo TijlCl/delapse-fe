@@ -8,7 +8,7 @@
       <h1 class="home-title ">Hi {{ userName }}!</h1>
     </div>
 
-    <NuxtLink to="/check-in/create">
+    <NuxtLink :to="checkInRoute">
       <HomeCheckIn />
     </NuxtLink>
 
@@ -61,6 +61,12 @@ export default {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
       }
     },
+    hasDailyFilled() {
+      return this.$store.getters['checkIns/hasDailyFilled']
+    },
+    checkInRoute() {
+      return this.hasDailyFilled ? '/check-in/check-ins' : '/check-in/create';
+    }
   },
   async fetch ({ store }) {
     await store.dispatch('events/fetchAll');

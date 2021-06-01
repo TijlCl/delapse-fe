@@ -114,13 +114,14 @@ export default {
     includesReason(reason) {
       return this.reasons.includes(reason);
     },
-    save() {
-      this.$store.dispatch('checkIn/create', {
+    async save() {
+      await this.$store.dispatch('checkIn/create', {
         mood: this.selected,
         emoji: this.selectedEmoji,
         description: this.description,
         tags: this.reasons
       })
+      this.$router.push('/');
     }
   }
 }

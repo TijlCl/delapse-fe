@@ -10,7 +10,7 @@
       </div>
       <div class="emoji-wrapper">
         <div class="emoji" v-bind:class="currentDay === 2 ? 'active-emoji' : ''">
-          <span class="emoji-icon" v-html="getEmoji('monday')" />
+          <span class="emoji-icon" v-html="getEmoji('tuesday')" />
         </div>
         <p>T</p>
       </div>
@@ -22,25 +22,25 @@
       </div>
       <div class="emoji-wrapper">
         <div class="emoji" v-bind:class="currentDay === 4 ? 'active-emoji' : ''">
-          <span class="emoji-icon" v-html="getEmoji('monday')" />
+          <span class="emoji-icon" v-html="getEmoji('thursday')" />
         </div>
         <p>T</p>
       </div>
       <div class="emoji-wrapper">
         <div class="emoji" v-bind:class="currentDay === 5 ? 'active-emoji' : ''">
-          <span class="emoji-icon" v-html="getEmoji('monday')" />
+          <span class="emoji-icon" v-html="getEmoji('friday')" />
         </div>
         <p>F</p>
       </div>
       <div class="emoji-wrapper">
         <div class="emoji" v-bind:class="currentDay === 6 ? 'active-emoji' : ''">
-          <span class="emoji-icon" v-html="getEmoji('monday')" />
+          <span class="emoji-icon" v-html="getEmoji('saturday')" />
         </div>
         <p>S</p>
       </div>
       <div class="emoji-wrapper">
-        <div class="emoji" v-bind:class="currentDay === 7 ? 'active-emoji' : ''">
-          <span class="emoji-icon" v-html="getEmoji('monday')" />
+        <div class="emoji" v-bind:class="currentDay === 0 ? 'active-emoji' : ''">
+          <span class="emoji-icon" v-html="getEmoji('sunday')" />
         </div>
         <p>S</p>
       </div>
