@@ -177,11 +177,11 @@ h1 {
 }
 
 .reasons {
-  height: 100vh;
+  height: 70vh;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 10px;
   position: absolute;
-  bottom: -30vh;
+  bottom: 0;
   width: 100vw;
 }
 
