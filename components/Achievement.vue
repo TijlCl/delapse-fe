@@ -3,7 +3,7 @@
     <div class="md:flex relative h-full">
       <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="400" alt="event background image" />
       <div class="text-block">
-        <p class="text-xs md:text-base text-white text-center lg:text-xl">{{ title }}</p>
+        <h1 class="text-xs md:text-base text-white text-center lg:text-xl">{{ title }}</h1>
       </div>
     </div>
   </div>
@@ -39,8 +39,9 @@ export default {
   bottom: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 3px 15px 20px 20px;
-  max-height: 15%;
+  padding: 3px 15px 3px 15px;
+  max-height: 50%;
+  white-space: normal;
   width: 100%;
 }
 
