@@ -41,7 +41,7 @@
 
     <div class="mt-6 px-16">
       <NuxtLink  :to="`/users/report/${this.$route.params.id}`">
-        <Button title="Report user" color="#BB0303" @click.native="friendRequest"/>
+        <Button title="Report user" color="#BB0303"/>
       </NuxtLink>
     </div>
 

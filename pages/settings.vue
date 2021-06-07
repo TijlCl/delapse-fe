@@ -3,7 +3,7 @@
     <TopNav pageTitle="Settings" arrowColour="white" :line="false"></TopNav>
 
     <div
-      class="w-full max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center"
+      class="w-full max-w-sm mx-auto flex md:inline md:max-w-full items-center justify-center pb-6"
     >
       <div class="py-4 px-6 mt-6 md:py-32 md:px-24">
 
@@ -57,6 +57,10 @@
           </div>
 
         </form>
+
+        <div class="mt-12">
+          <Button title="Relapsed" color="#BB0303" @click.native="relapsed"/>
+        </div>
 
 
       </div>
@@ -141,6 +145,11 @@ export default {
         console.log(e);
       }
     },
+
+    async relapsed () {
+      await this.$store.dispatch('daysClean/relapsed');
+      await this.$router.push('/profile');
+    }
   },
 }
 </script>
