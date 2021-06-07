@@ -1,29 +1,38 @@
 <template>
-  <div class="min-h-screen">
-    <div class="h-64 flex flex-wrap justify-center shadow" :style="headerBackground">
-      <TopNav :line="false" />
+  <div class="min-h-screen pb-16">
+    <div class="header-background h-64 flex flex-wrap justify-center shadow ipad-header" :style="headerBackground">
+      <TopNav :line="false" arrowColor="white">
+      </TopNav>
       <div class="flex row-auto w-full">
         <div class="w-1/4"></div>
-        <div class="w-1/2 pb-10 flex flex-col items-center content-center justify-center">
-          <h1 class="name m-2">{{ user.name }}</h1>
-          <h2 class="location">Brussels, Belgium</h2>
+        <div class="w-1/2 flex flex-col items-center content-center justify-center">
+          <h1 class="name m-2 lg:mb-5">{{ user.name }}</h1>
+        </div>
+        <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
+
+        </div>
+      </div>
+      <div class="flex row-auto w-full">
+        <div class="w-1/4"></div>
+        <div class="w-1/2 flex flex-col items-center content-center justify-center">
+          <label class="flex justify-center imagePreview">
+            <nuxt-img v-if="user.image" width="200"  :src="user.image" class="object-cover w-20 h-20 rounded-full profile-image md:w-24 md:h-24 lg:w-32 md:h-32" alt="Profile image"/>
+            <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border  md:w-24 md:h-24">
+              <font-awesome-icon class="rounded-full text-4xl mx-auto" icon="user"/>
+            </div>
+          </label>
+
+
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
           <h1 class="w-full text-white text-right pr-2">Days clean</h1>
-          <h2 class="w-full text-white text-right pr-2 font-bold text-xl">0</h2>
+          <h2 class="w-full text-white text-right pr-2 font-bold text-xl"> {{ daysClean }}  </h2>
         </div>
       </div>
     </div>
 
-<!--    <div id="events" class="scroll-right ml-5 mt-16 mb-6">-->
-<!--      <Achievement v-for="(achievement, i) in achievements" :key="i" :img="achievement.image" :title="achievement.title" />-->
-<!--    </div>-->
-
-    <div id="challenges" class="scroll-right ml-5">
-      <p class="mb-1 subheader">Completed weekly challenges</p>
-      <div class="mt-8">
-        <CompletedChallengCard v-for="(achievement, i) in achievements" :key="i" img="cake" title="Bake a cake" />
-      </div>
+    <div id="events" class="scroll-right ml-5 mt-16 mb-6 md:mt-24">
+      <Achievement v-for="(achievement, i) in achievements" :key="i" :img="achievement.image" :title="achievement.title" />
     </div>
 
     <div class="mt-6 px-16">
@@ -36,6 +45,7 @@
       </NuxtLink>
     </div>
 
+    <bottom-nav/>
   </div>
 </template>
 
@@ -46,12 +56,15 @@ export default {
     return {
     }
   },
-  beforeMount() {
-    this.$store.dispatch('user/fetch', this.$route.params.id)
+
+  async fetch ({ store, params }) {
+    await store.dispatch('user/fetch', params.id);
+    await store.dispatch('user/fetchUserAchievements', params.id);
+    await store.dispatch('user/fetchUserDaysClean', params.id);
   },
   computed: {
     achievements() {
-      return this.$store.getters['achievements/achievements'];
+      return this.$store.getters['user/userAchievements'];
     },
     user() {
       return this.$store.getters['user/user'];
@@ -61,8 +74,12 @@ export default {
       return {
         backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
       }
+    },
+    daysClean() {
+      return this.$store.getters['user/daysClean'];
     }
   },
+
   mounted() {
     this.$store.dispatch('achievements/fetchAll');
   },
@@ -90,7 +107,7 @@ export default {
 .name{
   color: white;
   font-size: 24pt;
-  max-height: 30%;
+  max-height: 40%;
   white-space: pre;
 }
 
@@ -116,6 +133,40 @@ export default {
 .subheader {
   font-weight: lighter;
   color: #707070;
-  position: fixed;
+}
+
+.profile-image{
+  position: relative;
+  bottom: -50%;
+  border: 3px solid white;
+}
+
+.input-errors{
+  font-weight: bold;
+  color: #ff0000;
+}
+
+.no-border{
+  border-width: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .ipad-header {
+    height: 20em;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .ipad-header {
+    height: 30em;
+  }
+
+  .name{
+    font-size: 35pt;
+  }
+
+  .location{
+    font-size: 16pt;
+  }
 }
 </style>

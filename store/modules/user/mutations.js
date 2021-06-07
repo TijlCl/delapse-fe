@@ -10,4 +10,12 @@ export default {
   setReportUserErrors(state, errors) {
     Vue.set(state, 'reportUserErrors', errors)
   },
+
+  setUserAchievements(state, achievements) {
+    Vue.set(state, 'userAchievements', achievements)
+  },
+
+  setDaysClean(state, daysClean) {
+    Vue.set(state, 'daysClean', daysClean)
+  },
 }

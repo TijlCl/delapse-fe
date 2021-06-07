@@ -15,4 +15,14 @@ export default {
         throw errors;
       })
   },
+
+  async fetchUserAchievements (context, userId) {
+    const { data } = await this.$axios.get(`/api/v1/achievements/user/${userId}`);
+    context.commit('setUserAchievements', data.data);
+  },
+
+  async fetchUserDaysClean (context, userId) {
+    const { data } = await this.$axios.get(`/api/v1/days-clean/user/${userId}`);
+    context.commit('setDaysClean', data);
+  },
 }

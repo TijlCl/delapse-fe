@@ -6,4 +6,6 @@ export default () => ({
   initialState: initialModel,
   user: {},
   reportUserErrors: {},
+  userAchievements: [],
+  daysClean: '',
 })
