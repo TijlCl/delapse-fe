@@ -10,7 +10,6 @@
         <div class="w-1/4"></div>
         <div class="w-1/2 flex flex-col items-center content-center justify-center">
           <h1 class="name m-2 lg:mb-5">{{ userName[0].toUpperCase() + userName.substring(1) }}</h1>
-          <h2 class="location">Brussels, Belgium</h2>
         </div>
         <div class="w-1/4 pb-2 flex flex-wrap content-end justify-center">
 
