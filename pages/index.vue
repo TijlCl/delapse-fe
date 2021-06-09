@@ -72,6 +72,17 @@ export default {
     await store.dispatch('events/fetchAll');
     await store.dispatch('challenges/fetchActive');
     await store.dispatch('checkIns/fetchThisWeeks');
+    await store.dispatch('friends/fetchRequests');
+  },
+  mounted() {
+    Echo.private(`friend-request.${this.$auth.user.id}`).listen(".new-friend-request", e => {
+      this.$store.commit('friends/addFriendRequest', e.user);
+      this.$store.commit('notifications/addNotification');
+    });
+    Echo.private(`friend-accepted.${this.$auth.user.id}`).listen(".friend-accepted", e => {
+      this.$store.commit('friends/addToFriends', e.user);
+      this.$toast.success(`${e.user.user.name} has accepted your friend request!`)
+    });
   },
   methods: {
     logout() {

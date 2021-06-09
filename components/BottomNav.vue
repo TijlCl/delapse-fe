@@ -6,6 +6,9 @@
       </NuxtLink>
     </div>
     <div class="flex place-content-center flex-wrap-reverse icon text-xl md:text-3xl lg:text-4xl" v-bind:class="isActive('chat') ? 'active' : '' ">
+      <div v-if="notificationsAmount > 0" class="notifications">
+        <p>{{ notificationsAmount }}</p>
+      </div>
       <NuxtLink  to="/friends">
         <font-awesome-icon icon="comment" class="text-green-600" v-bind:class="isActive('chat') ? 'active-icon' : '' "/>
       </NuxtLink>
@@ -35,6 +38,11 @@ export default {
     return {
     }
   },
+  computed: {
+    notificationsAmount() {
+      return this.$store.getters['notifications/notificationsAmount'];
+    }
+  },
   methods: {
     isActive(link) {
       return link === this.active;
@@ -62,7 +70,23 @@ export default {
   width: 1.75em;
   height: 1.75em;
   align-self: center;
+}
 
+.notifications {
+  background: #38a169;
+  border-radius: 50%;
+  width: .75em;
+  height: .75em;
+  align-self: center;
+  color: white;
+}
+
+.notifications p {
+  position: relative;
+  font-size: 12px;
+  font-weight: 900;
+  left: 4px;
+  top: -2px;
 }
 
 .active-icon {

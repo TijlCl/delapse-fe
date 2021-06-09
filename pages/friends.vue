@@ -13,6 +13,7 @@
         </button>
       </nav>
       <div v-if="display === 'chats'">
+        <friend-request-card v-for="(request, i) in friendRequests" :key="request.id" :user="request" />
         <FriendCard v-for="(friend, i) in friends" :key="i" :friend="friend" @click.native="openChat(friend)"/>
       </div>
       <div v-else>
@@ -32,6 +33,7 @@
 
 <script>
 import FriendCard from "~/components/friends/FriendCard";
+import FriendRequestCard from "~/components/friends/FriendRequestCard";
 import UserCard from "~/components/friends/UserCard";
 import ChatGroupCard from "~/components/friends/ChatGroupCard";
 import Vue from 'vue';
@@ -40,6 +42,7 @@ export default {
   name: "friends",
   components: {
     FriendCard,
+    FriendRequestCard,
     UserCard,
     ChatGroupCard
   },
@@ -60,10 +63,14 @@ export default {
     chatGroups () {
       return this.$store.getters['chatGroups/chatGroups'];
     },
+    friendRequests() {
+      return this.$store.getters['friends/friendRequests'];
+    }
   },
   mounted() {
     this.$store.dispatch('friends/fetchAll');
     this.$store.dispatch('chatGroups/fetchAll');
+    this.$store.dispatch('friends/fetchRequests');
   },
   methods: {
     focus(target) {

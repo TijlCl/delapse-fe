@@ -35,7 +35,7 @@
       <Achievement v-for="(achievement, i) in achievements" :key="i" :img="achievement.image" :title="achievement.title" />
     </div>
 
-    <div class="mt-6 px-16">
+    <div v-if="!isFriend" class="mt-6 px-16">
       <Button title="Add friend" color="#1BA711" @click.native="friendRequest"/>
     </div>
 
@@ -56,7 +56,6 @@ export default {
     return {
     }
   },
-
   async fetch ({ store, params }) {
     await store.dispatch('user/fetch', params.id);
     await store.dispatch('user/fetchUserAchievements', params.id);
@@ -77,15 +76,24 @@ export default {
     },
     daysClean() {
       return this.$store.getters['user/daysClean'];
+    },
+    isFriend() {
+      return this.$store.getters['friends/isFriend'](this.$route.params.id)
     }
   },
-
   mounted() {
     this.$store.dispatch('achievements/fetchAll');
   },
   methods: {
-    friendRequest() {
-      this.$store.dispatch('user/friendRequest', this.$route.params.id)
+    async friendRequest() {
+      try {
+        await this.$store.dispatch('user/friendRequest', this.$route.params.id);
+        this.$toast.success('Friend request sent!')
+        this.$router.push('/friends')
+      } catch (e) {
+        this.$toast.error('Failed to send friend request!')
+      }
+
     }
   }
 }
