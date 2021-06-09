@@ -2,8 +2,6 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
-  target: 'static',
-
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'delapse-fe',
@@ -70,7 +68,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/fontawesome'
+    '@nuxtjs/fontawesome',
+    '@nuxtjs/pwa'
   ],
 
   fontawesome: {
@@ -108,13 +107,12 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxt/image',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
     '@nuxtjs/auth-next',
-    '@nuxtjs/toast',
-    '@nuxt/image'
+    '@nuxtjs/toast'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -192,7 +190,20 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      lang: 'en'
+      name: 'Delapse',
+      lang: 'en-US',
+      start_url: "http://localhost:3000/",
+      orientation: 'portrait',
+      background_color: '#1BA711',
+      theme_color: '#1BA711',
+      icons: [
+        {
+          src: '/icon.png',
+          sizes: '196x196',
+          type: 'image/png',
+          purpose: 'any maskable'
+        }
+      ]
     }
   },
 
@@ -214,6 +225,8 @@ export default {
 
   // allow images from api
   image: {
-    domains: [process.env.API_URL],
+    // domains: [process.env.API_URL],
+    // dir: 'static/img',
+    provider: 'ipx'
   },
 }

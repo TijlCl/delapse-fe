@@ -1,5 +1,5 @@
 <template>
-  <button class="text-white md:text-xl lg:text-2xl" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button">
+  <button class="text-white md:text-xl lg:text-2xl opacity-80" v-bind:class="small ? 'button-small' : 'button'" :style="{ 'background-color': color}" ref="button">
     <span v-html="title"></span>
   </button>
 </template>
@@ -52,12 +52,15 @@ button:focus {
   outline:0;
 }
 
+.opacity-80{
+  opacity: 0.8;
+}
+
 .button{
   width: 100%;
   padding: 8px 20px 8px 20px;
   border-radius: 25px;
   text-align: center;
-  opacity: 80%;
   overflow: hidden;
   display: inline-block;
   position: relative;
@@ -68,33 +71,10 @@ button:focus {
   padding: 1px 3px 1px 3px;
   border-radius: 25px;
   text-align: center;
-  opacity: 80%;
   overflow: hidden;
   display: inline-block;
   position: relative;
   font-size: 1.8vh;
-}
-
-.ripple {
-  background-color: white;
-  width: 1rem;
-  height: 1rem;
-  position: absolute;
-  border-radius: 50%;
-  transform: translateX(-100%) translateY(-100%);
-  mix-blend-mode: screen;
-  animation: ripple 1250ms ease-out forwards, fade 1500ms ease-out forwards;
-}
-
-@keyframes ripple {
-  0%   { transform: translate(-100%, -100%); }
-  80%  { transform: translate(-100%, -100%) scale(50); }
-  100% { transform: translate(-100%, -100%) scale(50); opacity: 0; }
-}
-
-@keyframes fade {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
 }
 
 </style>
