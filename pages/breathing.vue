@@ -1,5 +1,5 @@
 <template>
-  <div class="breathing-container min-h-screen" :style="pageBackgroundImage">
+  <div class="breathing-container min-h-screen">
     <TopNav v-if="selecting" pageTitle="Take a breath" :line="false" arrowColor="white"/>
     <TopNavBreathing v-else pageTitle="Take a breath" :line="false" arrowColor="white" @back="stop"/>
     <p v-if="!selecting" class="text-white timer">{{ timer }}</p>
@@ -106,12 +106,6 @@ export default {
     }
   },
   computed: {
-    pageBackgroundImage() {
-      const imgUrl = this.$img('/img/breathing.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('${imgUrl}')`
-      }
-    },
     timer () {
       return new Date(this.countDown * 1000).toISOString().substr(14, 5)
     }
@@ -183,8 +177,12 @@ export default {
 }
 
 .breathing-container {
-  background-repeat: no-repeat;
   background-size: 110% 140%;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0)), url('/img/breathing.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 .breathing-type {

@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen lg:pb-12">
 
-    <div class="header-background h-48 ipad-header flex flex-wrap content-end shadow mb-10" :style="homeBackground" >
+    <div class="header-background h-48 ipad-header flex flex-wrap content-end shadow mb-10">
       <NuxtLink  to="/profile">
         <font-awesome-icon icon="user" class="profile-link" />
       </NuxtLink>
@@ -54,12 +54,6 @@ export default {
     },
     challenges() {
       return this.$store.getters['challenges/challenges'];
-    },
-    homeBackground() {
-      const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
-      }
     },
     hasDailyFilled() {
       return this.$store.getters['checkIns/hasDailyFilled']
@@ -115,14 +109,11 @@ export default {
 }
 
 .header-background{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/home-header-bg.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   object-fit: cover;
-}
-
-.header-background:after{
-  background-color: rgba(0 ,0 ,0 ,0.1);
 }
 
 .home-title{

@@ -1,5 +1,5 @@
 <template>
-  <div class="check-in" :style="checkInBackGround">
+  <div class="check-in">
     <p>Your daily check in</p>
     <div class="emojis">
       <div class="emoji-wrapper">
@@ -67,12 +67,6 @@ export default {
     checkInsWeekly() {
       return this.$store.getters["checkIns/checkInsWeekly"];
     },
-    checkInBackGround() {
-      const imgUrl = this.$img('/img/meditation.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('${imgUrl}')`
-      }
-    },
     currentDay () {
       const date = new Date();
       return date.getDay();
@@ -95,6 +89,11 @@ export default {
   margin: 0 auto;
   border-radius: 0.75rem;
   text-align: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), url('/img/meditation.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 .emojis {

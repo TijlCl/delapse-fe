@@ -107,7 +107,6 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxt/image',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
@@ -221,12 +220,5 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  },
-
-  // allow images from api
-  image: {
-    // domains: [process.env.API_URL],
-    // dir: 'static/img',
-    provider: 'ipx'
   },
 }

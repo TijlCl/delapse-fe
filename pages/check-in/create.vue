@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen check-in" :style="homeBackground">
+  <div class="min-h-screen check-in">
     <TopNav pageTitle="Daily check in" arrowColor="white">
       <font-awesome-icon v-if="!selectingMood" icon="save" class="md:text-2xl text-white" @click="save"/>
     </TopNav>
@@ -89,12 +89,6 @@ export default {
     }
   },
   computed: {
-    homeBackground() {
-      const imgUrl = this.$img('/img/register-bg.jpg', { width: 400 })
-      return {
-        backgroundImage: `url('${imgUrl}')`
-      }
-    }
   },
   watch: {
   },
@@ -136,8 +130,12 @@ h1 {
   margin: 8vw;
 }
 .check-in{
-  background-repeat: no-repeat;
-  background-size: 110% 125%
+  background-size: 110% 125%;
+  background-image: url('/img/register-bg.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 .moods {

@@ -1,5 +1,5 @@
 <template>
-  <nuxt-img class="w-full background" :src="`/img/${img}.jpg`" width="400" :alt="alt" />
+  <img class="w-full background" :src="`/img/${img}.jpg`" :alt="alt" />
 </template>
 
 <script>

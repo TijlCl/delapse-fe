@@ -1,7 +1,7 @@
 <template>
   <NuxtLink to="/events/create" class="rounded-xl overflow-hidden h-20 inline-block shadow-lg mr-3 w-20 add-event-card">
     <div class="md:flex relative h-full">
-      <nuxt-img class="object-cover h-auto" :src="`/img/${img}.jpg`" width="140" height="150" alt="event background image" />
+      <img class="object-cover h-auto h-full" :src="`/img/${img}.jpg`" alt="event background image" />
       <div class="background-overflow flex justify-center">
         <font-awesome-icon class="text-white self-center" icon="plus"/>
       </div>

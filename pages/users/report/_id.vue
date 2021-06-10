@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-no-repeat min-h-screen background-image" :style="pageBackgroundImage">
+  <div class="min-h-screen bg-no-repeat min-h-screen background-image">
     <TopNav pageTitle="Report user" arrowColour="white" :line="false"></TopNav>
 
     <div class="w-full max-w-sm mx-auto flex items-center justify-center md:inline md:max-w-full">
@@ -48,12 +48,6 @@ export default {
   },
 
   computed: {
-    pageBackgroundImage() {
-      const imgUrl = this.$img('/img/report-bg.jpg', {width: 400})
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('${imgUrl}')`
-      }
-    },
 
     errors() {
       return this.$store.getters['user/reportUserErrors'];
@@ -82,6 +76,11 @@ export default {
 
 .background-image {
   background-size: 110% 125%;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('/img/report-bg.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200 login-bg pt-10 sm:pt-20 pb-1" :style="pageBackgroundImage">
+  <div class="min-h-screen bg-gray-200 login-bg pt-10 sm:pt-20 pb-1">
     <div class="mb-8 sm:mb-16 mx-auto flex items-center justify-center">
       <h1 class="login-title">Delapse</h1>
       <p class=" ml-1 self-end mb-1 sm:mb-2 text-white text-xs md:text-base">Retake life.</p>
@@ -64,12 +64,6 @@ export default {
   },
 
   computed: {
-    pageBackgroundImage() {
-      const imgUrl = this.$img('/img/login-bg.jpg', { width: 400 })
-      return {
-        backgroundImage: `url('${imgUrl}')`
-      }
-    }
   }
 }
 </script>
@@ -77,7 +71,12 @@ export default {
 <style scoped>
 .login-bg{
   background-repeat: no-repeat;
-  background-size: 110% 125%
+  background-size: 110% 125%;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.2)), url('/img/login-bg.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 .login-title {
   font-size: 5vh;

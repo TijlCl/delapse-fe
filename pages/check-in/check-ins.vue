@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen check-in" :style="homeBackground">
+  <div class="min-h-screen check-in">
     <TopNav pageTitle="Your check ins" arrowColor="white" />
 
     <div class="date-wrapper">
@@ -51,12 +51,6 @@ export default {
         this.getData(this.to, val);
       }
     },
-    homeBackground() {
-      const imgUrl = this.$img('/img/check-in-2.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${imgUrl}')`
-      }
-    },
     checkIns() {
       return this.$store.getters['checkIns/checkIns'];
     },
@@ -93,7 +87,12 @@ export default {
 
 .check-in{
   background-repeat: no-repeat;
-  background-size: 110% 100%
+  background-size: 110% 100%;
+  background-image: url('/img/check-in-2.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 .total{

@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen add-event-bg  bg-no-repeat min-h-screen background-image" :style="pageBackgroundImage">
+  <div class="min-h-screen add-event-bg  bg-no-repeat min-h-screen background-image">
     <TopNav pageTitle="Edit profile" arrowColour="white" :line="false"></TopNav>
 
     <div class="w-full flex flex-col items-center content-center justify-center mt-16">
@@ -66,13 +66,6 @@ export default {
   },
 
   computed: {
-    pageBackgroundImage() {
-      const imgUrl = this.$img('/img/coast.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('${imgUrl}')`
-      }
-    },
-
     errors() {
       return this.$store.getters['userProfile/errors'];
     },
@@ -108,6 +101,11 @@ export default {
 
 .background-image{
   background-size: 110% 125%;
+  background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7)), url('/img/coast.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 
 </style>

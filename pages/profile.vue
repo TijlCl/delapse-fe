@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen pb-16">
-    <div class="header-background h-64 flex flex-wrap justify-center shadow ipad-header" :style="headerBackground">
+    <div class="header-background h-64 flex flex-wrap justify-center shadow ipad-header" >
       <TopNav :line="false" arrowColor="white">
         <NuxtLink  to="/settings">
           <font-awesome-icon class="text-white md:text-2xl" icon="cog"/>
@@ -19,7 +19,7 @@
         <div class="w-1/4"></div>
         <div class="w-1/2 flex flex-col items-center content-center justify-center">
           <label for="file-input" class="flex justify-center imagePreview">
-            <nuxt-img v-if="userImage" width="200"  :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image md:w-24 md:h-24 lg:w-32 md:h-32" alt="Profile image"/>
+            <img v-if="userImage" :src="userImage" class="object-cover w-20 h-20 rounded-full profile-image md:w-24 md:h-24 lg:w-32 md:h-32" alt="Profile image"/>
             <div v-else class="rounded-full profile-image bg-gray-400 w-20 h-20 grid place-items-center no-border  md:w-24 md:h-24">
               <font-awesome-icon class="rounded-full text-4xl mx-auto" icon="user"/>
             </div>
@@ -76,12 +76,6 @@ export default {
     daysClean() {
       return this.$store.getters['daysClean/daysClean'];
     },
-    headerBackground() {
-      const imgUrl = this.$img('/img/home-header-bg.jpg', { width: 400 })
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
-      }
-    },
     errors() {
       return this.$store.getters['userSettings/errors'];
     },
@@ -110,6 +104,7 @@ export default {
 
 
 .header-background{
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/img/home-header-bg.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

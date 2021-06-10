@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-gray-200 register-bg pt-10 sm:pt-20 pb-10" :style="pageBackgroundImage">
+  <div class="min-h-screen bg-gray-200 register-bg pt-10 sm:pt-20 pb-10">
     <div class="mb-5 sm:mb-10 mx-auto flex items-center justify-center">
       <h1 class="register-title">Delapse</h1>
     </div>
@@ -93,12 +93,6 @@ export default {
   },
 
   computed: {
-    pageBackgroundImage() {
-      const imgUrl = this.$img('/img/register-bg.jpg')
-      return {
-        backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('${imgUrl}')`
-      }
-    }
   },
 
   methods: {
@@ -133,9 +127,11 @@ export default {
 </script>
 <style scoped>
 .register-bg{
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5)), url('/img/register-bg.jpg');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  object-fit: cover;
 }
 .register-title {
   font-size: 5vh;

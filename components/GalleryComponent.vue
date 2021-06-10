@@ -2,7 +2,7 @@
   <div class="min-h-screen">
     <div v-masonry transition-duration="1s" column-width="3"  item-selector=".item" gutter="1" fit-width="true" class="m-0 w-full image-grid">
       <div v-masonry-tile class="item" :key="index" v-for="(challenge, index) in completedChallenges" :class="randomImageClass(index)" @click="challengeDetail(challenge.id)">
-        <nuxt-img width="300"  :src="challenge.image || `/img/${challenge.challenge.image}.jpg`" class="rounded-2xl" />
+        <img :src="challenge.image || `/img/${challenge.challenge.image}.jpg`" class="rounded-2xl" />
       </div>
     </div>
   </div>
