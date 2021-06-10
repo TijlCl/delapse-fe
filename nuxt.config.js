@@ -11,7 +11,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
 
@@ -191,7 +191,7 @@ export default {
     manifest: {
       name: 'Delapse',
       lang: 'en-US',
-      start_url: "http://localhost:3000/",
+      start_url: "https://www.delapse.be/",
       orientation: 'portrait',
       background_color: '#1BA711',
       theme_color: '#1BA711',

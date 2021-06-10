@@ -7,7 +7,7 @@ window.Echo = new Echo({
   key: process.env.mixPusherAppKey,
   cluster: process.env.mixPusherAppCluster,
   encrypted: true,
-  authEndpoint: "http://localhost:80/broadcasting/auth",
+  authEndpoint: `${process.env.apiURL}/broadcasting/auth`,
   auth: {
     headers: {
       Authorization: window.localStorage.getItem('auth._token.password_grant')
