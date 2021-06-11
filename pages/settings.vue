@@ -62,6 +62,7 @@
           <Button title="Relapsed" color="#BB0303" @click.native="relapsed"/>
         </div>
 
+        <Button class="mt-12" title="Logout" @click.native="logout" />
 
       </div>
 
@@ -124,6 +125,10 @@ export default {
     },
   },
   methods: {
+    logout() {
+      this.$auth.logout();
+    },
+
     async updateSettings() {
       const settings = {
         enable_location: this.enableLocation,
