@@ -50,7 +50,7 @@
     </div>
 
     <div class="mt-6 px-16 md:mt-20">
-      <Button title="I need help!" color="#1BA711"/>
+      <Button title="I need help!" color="#1BA711" @click.native="help"/>
     </div>
 
     <bottom-nav active="profile"/>
@@ -96,6 +96,11 @@ export default {
           this.userImage = response
         })
       }
+    },
+    async help() {
+      await this.$store.dispatch("user/needHelp");
+      this.$toast.success('Help is on the way!');
+      this.$router.push('/');
     }
   }
 }

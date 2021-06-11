@@ -1,5 +1,5 @@
 <template>
-  <div class="check-in" @click="showDescription = !showDescription">
+  <div class="check-in-card" @click="showDescription = !showDescription">
     <transition name="fade" mode="out-in">
       <div v-if="!showDescription" key="info">
         <p class="date">{{ checkIn.date }}</p>
@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style scoped>
-.check-in {
+.check-in-card {
   height: 15vh;
   width: 90%;
   padding: 3vw;

@@ -13,5 +13,11 @@ export default {
   },
   removeFromRequests(state, userId) {
     state.friendRequests = state.friendRequests.filter(user => user.id !== userId);
-  }
+  },
+  addHelpRequest(state, user) {
+    state.helpRequests.push(user);
+  },
+  removeFromHelpRequests(state, userId) {
+    state.helpRequests = state.helpRequests.filter(user => user.id !== userId);
+  },
 }

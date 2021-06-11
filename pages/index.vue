@@ -77,6 +77,10 @@ export default {
       this.$store.commit('friends/addToFriends', e.user);
       this.$toast.success(`${e.user.user.name} has accepted your friend request!`)
     });
+    Echo.private(`help-request.${this.$auth.user.id}`).listen(".new-help-request", e => {
+      this.$toast.error('Someone needs your help!', {duration: 8000, onClick: this.helpHim()});
+      this.$store.commit('friends/addHelpRequest', e.user);
+    });
   },
   methods: {
     logout() {
@@ -93,6 +97,9 @@ export default {
         name: 'challenges-id',
         params: {id: id}
       })
+    },
+    helpHim() {
+      this.$router.push('/friends');
     }
   }
 }

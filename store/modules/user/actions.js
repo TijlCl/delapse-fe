@@ -25,4 +25,8 @@ export default {
     const { data } = await this.$axios.get(`/api/v1/days-clean/user/${userId}`);
     context.commit('setDaysClean', data);
   },
+
+  async needHelp(context) {
+    await this.$axios.post(`/api/v1/users/help`);
+  }
 }

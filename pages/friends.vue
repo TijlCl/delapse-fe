@@ -14,6 +14,7 @@
       </nav>
       <div v-if="display === 'chats'">
         <friend-request-card v-for="(request, i) in friendRequests" :key="request.id" :user="request" />
+        <help-request-card v-for="(request, i) in helpRequests" :key="request.id" :user="request" />
         <FriendCard v-for="(friend, i) in friends" :key="i" :friend="friend" @click.native="openChat(friend)"/>
       </div>
       <div v-else>
@@ -34,6 +35,7 @@
 <script>
 import FriendCard from "~/components/friends/FriendCard";
 import FriendRequestCard from "~/components/friends/FriendRequestCard";
+import HelpRequestCard from "~/components/friends/HelpRequestCard";
 import UserCard from "~/components/friends/UserCard";
 import ChatGroupCard from "~/components/friends/ChatGroupCard";
 import Vue from 'vue';
@@ -44,7 +46,8 @@ export default {
     FriendCard,
     FriendRequestCard,
     UserCard,
-    ChatGroupCard
+    ChatGroupCard,
+    HelpRequestCard
   },
   data() {
     return {
@@ -65,6 +68,9 @@ export default {
     },
     friendRequests() {
       return this.$store.getters['friends/friendRequests'];
+    },
+    helpRequests() {
+      return this.$store.getters['friends/HelpRequests'];
     }
   },
   mounted() {

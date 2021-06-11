@@ -60,6 +60,7 @@ export default {
     '~/plugins/chat-scroll.js',
     '~/plugins/vue-datepicker',
     '~/plugins/vue-carousel',
+    '~/plugins/notifications.js',
     { src: '~/plugins/vue-masonry', ssr: false }
   ],
 
@@ -192,6 +193,7 @@ export default {
   pwa: {
     manifest: {
       name: 'Delapse',
+      short_name: 'Delapse',
       lang: 'en-US',
       start_url: "https://www.delapse.be/",
       orientation: 'portrait',

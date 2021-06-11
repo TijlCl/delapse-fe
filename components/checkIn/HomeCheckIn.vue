@@ -115,7 +115,7 @@ export default {
 }
 
 .emoji-icon{
-  transform: translateY(0.05em) translateX(-0.02em);
+  transform: translateY(0.05em) translateX(0.1em);
 }
 
 .active-emoji {
